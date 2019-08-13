@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/confing"
+        android:title="配置" />
+    <item
+        android:id="@+id/history"
+        android:title="历史记录" />
+    <item
+        android:id="@+id/coinset"
+        android:title="币种设置" />
+</menu>

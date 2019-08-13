@@ -1,0 +1,1024 @@
+[
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "ADABTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "ADXBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "AEBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "AGIBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "AIONBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "AMBBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "APPCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "ARDRBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "ARKBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "ARNBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "ASTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "ATOMBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "BATBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "BCDBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "BCHABCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "BCPTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "BLZBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "BNBBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "BNTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "BQXBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "BRDBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "BTGBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "BTSBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 2,
+    "inIgnore": false,
+    "symbol": "BTCUSDT",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "BTTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "CDTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "CELRBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "CMTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "CNDBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "CVCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "DASHBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "DATABTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "DCRBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "DENTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "DGDBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "DLTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "DNTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "DOCKBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "EDOBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "ELFBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "ENGBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "ENJBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "EOSBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "ETCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "ETHBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "EVXBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "FETBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "FTMBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "FUELBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "FUNBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "GASBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "GNTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "GOBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "GRSBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "GTOBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "GVTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "GXSBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "HCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "HOTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "ICXBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "INSBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "IOSTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "IOTABTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "IOTXBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "KEYBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "KNCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "LENDBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": false,
+    "symbol": "LINKBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "LOOMBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "LRCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "LSKBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "LTCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "LUNBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "MANABTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "MATICBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "MCOBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "MDABTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "MFTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "MITHBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "MTHBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "MTLBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "NANOBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "NASBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "NAVBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "NCASHBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "NEBLBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "NEOBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "NPXSBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "NULSBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "NXSBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "OAXBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "ALGOBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "OMGBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "ONTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "ONEBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "DUSKBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "COSBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "OSTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "PHBBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "PIVXBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "POABTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "POLYBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "POWRBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "PPTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "QKCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "QLCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "QSPBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "QTUMBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "RCNBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "RDNBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "RENBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "REPBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "REQBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "RLCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "RVNBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "SKYBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "SNGLSBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "SNMBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "SNTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "STEEMBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "STORJBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "STRATBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "SYSBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "TFUELBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "THETABTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 1,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "TNBBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "TNTBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "TRXBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "VIABTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "VIBBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "VIBEBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "WABIBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "WANBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "WAVESBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "WPRBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "WTCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "XEMBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "XLMBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "XMRBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "XRPBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 0,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "XZCBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "YOYOBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "ZECBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 6,
+    "inIgnore": true,
+    "symbol": "ZENBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "ZILBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "ZRXBTC",
+    "unIngnoreTime": 0
+  }
+]

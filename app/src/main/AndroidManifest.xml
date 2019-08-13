@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.huzhipeng.coin">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission  android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission  android:name="android.permission.TYPE_SYSTEM_ALERT" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:name="com.huzhipeng.coin.application.AppConfig"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.Base">
+        <activity android:name="com.huzhipeng.coin.ui.activity.main.MainActivity"
+            android:launchMode="singleTask"
+            >
+
+        </activity>
+        <activity android:name="com.huzhipeng.coin.ui.activity.main.ConfigActivity" />
+        <activity android:name=".ui.activity.main.SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.main.CoinSetActivity" />
+        <activity android:name=".ui.activity.main.AlarmRecordActivity" />
+        <activity android:name=".ui.activity.main.CourseActivity" />
+        <activity android:name=".ui.activity.main.LogActivity" />
+        <activity android:name=".ui.activity.main.CoinDetailActivity" />
+
+        <service
+            android:name=".service.BackGroundService"
+            android:enabled="true"
+            android:exported="true" />
+    </application>
+
+</manifest>

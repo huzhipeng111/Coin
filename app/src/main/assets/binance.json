@@ -1,0 +1,10 @@
+{
+  "server":"50.2.39.94",
+  "server_port":25,
+  "local_address": "127.0.0.1",
+  "local_port":1080,
+  "password" :"huzhipeng0826",
+  "timeout":300,
+  "method":"aes-256-cfb",
+  "fast_open": false
+}

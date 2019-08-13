@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingLeft="@dimen/x30"
+    android:paddingRight="@dimen/x30"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="不要盲目追高"
+        android:textColor="@color/color_333"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="一定要有止盈止损的心态，不要贪心！！！"
+        android:textColor="@color/color_333"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="当买入一个币，在安全价格内(当前的稳定价格远在自己买入的价格之上)，可以尝试多持有一会，追求更大的利润"
+        android:textColor="@color/color_333"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="币的常态是usdt。或者是btc，不要放着为某种山寨币，只在报警的时候买入山寨币。"
+        android:textColor="@color/color_333"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="一个币报警，买入卖出之后，就不要在这个币档次拉盘期间再次进场了。防止被套。"
+        android:textColor="@color/color_333"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

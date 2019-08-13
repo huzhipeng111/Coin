@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.huzhipeng.coin.ui.activity.main.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_height="@dimen/x60">
+
+        <TextView
+            android:id="@+id/symbol"
+            android:text="交易对"
+            android:layout_width="@dimen/x140"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x5"
+            android:textColor="@color/color_333" />
+
+        <TextView
+            android:id="@+id/price"
+            android:text="价格"
+
+            android:layout_width="@dimen/x160"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x6"
+            android:textColor="@color/color_333" />
+
+        <TextView
+            android:id="@+id/tradeAveCount"
+            android:layout_width="@dimen/x180"
+            android:text="时间"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x6"
+            android:textColor="@color/color_333" />
+        <TextView
+            android:layout_width="@dimen/x100"
+            android:text="涨幅5m"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x6"
+            android:textColor="@color/color_333" />
+        <TextView
+            android:layout_width="@dimen/x100"
+            android:text="涨幅24"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x6"
+            android:textColor="@color/color_333" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:background="@color/color_f2f2f2"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
