@@ -92,6 +92,13 @@
   },
   {
     "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "BANDBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
     "decimal": 6,
     "inIgnore": true,
     "symbol": "BCDBTC",
@@ -158,6 +165,20 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "BTSBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "TOMOBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "PERLBTC",
     "unIngnoreTime": 0
   },
   {
@@ -386,6 +407,13 @@
   },
   {
     "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "XTZBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
     "decimal": 7,
     "inIgnore": true,
     "symbol": "GVTBTC",
@@ -393,7 +421,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "GXSBTC",
     "unIngnoreTime": 0
@@ -690,6 +718,13 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "PHBBTC",
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "CHZBTC",
     "unIngnoreTime": 0
   },
   {

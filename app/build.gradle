@@ -37,6 +37,13 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions { jvmTarget = '1.8' }
+
     androidExtensions {
         experimental = true
     }
@@ -52,7 +59,7 @@ greendao {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$supportVersion"
     implementation "com.android.support:recyclerview-v7:$supportVersion"
     implementation "com.android.support:support-dynamic-animation:$supportVersion"
@@ -93,6 +100,9 @@ dependencies {
     implementation 'com.yanzhenjie:permission:1.1.2'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
+
+    implementation 'io.neow3j:contract:2.2.0'
+
 //    compile 'com.safframework.log:saf-log:1.5.1'
 //    implementation project(':saf-log')
 }

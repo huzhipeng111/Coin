@@ -441,6 +441,14 @@ class MainActivity : BaseActivity(), MainContract.View {
                         try {
                             if ((it.fiveSecondsAverageTradingVolume >= AppConfig.instance.Number5Muniteofalarms) && (it.fiveSecondStandardDeviation <= it.fiveSecondsAverageTradingVolume * 1.6) && it.isReachLow) {
                                 runOnUiThread { addAlarm(it, 0) }
+                            } else {
+                                if (AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.size > 30) {
+                                    var size = AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.size
+                                    if (AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.drop(size - 30).filter { it > 0 }.size > 20) {
+                                        //KLog.i("30秒内，有15秒的交易次数不为0，报警")
+                                        runOnUiThread { addAlarm(it, 1) }
+                                    }
+                                }
                             }
                         } catch (e: Exception) {
                             e.printStackTrace()
@@ -450,6 +458,8 @@ class MainActivity : BaseActivity(), MainContract.View {
                     }
                 }
             }
+
+
         }
         runOnUiThread {
             var maxTradeSymbolAdapterEntity = adapterList.filter { !it.symbol.s.equals("BTCUSDT") }.maxBy { it.twoMinuteTradeCount }
@@ -553,7 +563,7 @@ class MainActivity : BaseActivity(), MainContract.View {
         if (alarmType == 0) {
             return "平均交易次数 : " + symbolAadapterEntity.fiveSecondsAverageTradingVolume
         } else if (alarmType == 1) {
-            return "标准差： " + symbolAadapterEntity.fiveSecondStandardDeviation
+            return "超过20秒"
         } else if (alarmType == 2) {
             return "5分钟涨幅"
         } else if (alarmType == 3) {
@@ -584,7 +594,7 @@ class MainActivity : BaseActivity(), MainContract.View {
         moveTaskToBack(true)
     }
 
-    //获取某一个币5条数据内的平均交易量
+    //分析某一个币的具体数据。
     fun getFiveSecondsAverageTradingVolume(symbolAadapterEntity: SymbolAdapterEntity, symbolList: MutableList<Symbol>, index: Int) {
         if (index != symbolAadapterEntity.symbol.index) {
             return
@@ -788,30 +798,4 @@ class MainActivity : BaseActivity(), MainContract.View {
             KLog.e("text: $text")
         }
     }
-
-
-    private fun sendData(): String {
-        var jsonHead = ""
-        val mapHead = HashMap<String, String>()
-        mapHead.put("qrCode", "123456")
-        jsonHead = buildRequestParams(mapHead)
-        Log.e("TAG", "sendData: $jsonHead")
-        return jsonHead
-    }
-
-
-    fun buildRequestParams(params: Any): String {
-        val gson = Gson()
-        return gson.toJson(params)
-    }
-
-    private fun sendHeart(): String {
-        var jsonHead = ""
-        val mapHead = HashMap<String, String>()
-        mapHead.put("heart", "heart")
-        jsonHead = buildRequestParams(mapHead)
-        Log.e("TAG", "sendHeart：$jsonHead")
-        return jsonHead
-    }
-
 }
