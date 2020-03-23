@@ -30,35 +30,35 @@
 
         <TextView
             android:id="@+id/tradeAveCount"
-            android:layout_width="@dimen/x60"
+            android:layout_width="@dimen/x160"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10"
             android:gravity="center"
             android:textColor="@color/color_333" />
 
-        <TextView
-            android:id="@+id/muniteAradeAveCount"
-            android:layout_width="@dimen/x60"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x10"
-            android:gravity="center"
-            android:textColor="@color/color_333" />
+<!--        <TextView-->
+<!--            android:id="@+id/muniteAradeAveCount"-->
+<!--            android:layout_width="@dimen/x60"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="@dimen/x10"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/color_333" />-->
 
         <TextView
             android:id="@+id/gain5m"
-            android:layout_width="@dimen/x120"
+            android:layout_width="@dimen/x160"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10"
             android:gravity="center"
             android:textColor="@color/color_333" />
 
-        <TextView
-            android:id="@+id/gain24"
-            android:layout_width="@dimen/x120"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x10"
-            android:gravity="center"
-            android:textColor="@color/color_333" />
+<!--        <TextView-->
+<!--            android:id="@+id/gain24"-->
+<!--            android:layout_width="@dimen/x120"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="@dimen/x10"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/color_333" />-->
 
     </LinearLayout>
 

@@ -59,6 +59,7 @@ import com.socks.library.KLog
 import com.yanzhenjie.alertdialog.AlertDialog
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.PermissionListener
+import kotlinx.android.synthetic.main.activity_log.view.*
 import okhttp3.*
 import okhttp3.internal.ws.RealWebSocket
 
@@ -160,27 +161,8 @@ class MainActivity : BaseActivity(), MainContract.View {
         adapterList = mutableListOf()
         coinList = AppConfig.instance.daoSsesion.coinEntityDao.loadAll()
         coinList.forEach {
-            when (it.coinType) {
-                0 -> {
-                    if (AppConfig.instance.showZhuliu) {
-                        adapterList.add(SymbolAdapterEntity(it, Symbol(it.symbol)))
-                    } else {
-                        if (AppConfig.instance.observationBtc && "BTCUSDT".equals(it.symbol)) {
-                            adapterList.add(SymbolAdapterEntity(it, Symbol(it.symbol)))
-                        }
-                    }
-                }
-                1 -> {
-                    if (AppConfig.instance.showLaji) {
-//                        adapterList.add(SymbolAdapterEntity(it, Symbol(it.symbol)))
-                    }
-                }
-                2 -> {
-                    if (it.inIgnore) {
-                        adapterList.add(SymbolAdapterEntity(it, Symbol(it.symbol)))
-                    }
-                }
-            }
+            AppConfig.instance.allSymbolTradMuniteVulm.put(it.symbol, mutableListOf())
+            adapterList.add(SymbolAdapterEntity(it, Symbol(it.symbol)))
         }
         allSymbolAdapter = AllSymbolAdapter(arrayListOf())
         recyclerview.adapter = allSymbolAdapter
@@ -363,9 +345,6 @@ class MainActivity : BaseActivity(), MainContract.View {
             allSymbol10AllMuMap.forEach {
                 if (it.key.equals(symbolAadapterEntity.coinEntity.symbol)) {
                     symbolAadapterEntity.symbol = it.value.last()
-                    if (symbolAadapterEntity.mustHeighPrice == BigDecimal.ZERO) {
-                        symbolAadapterEntity.mustHeighPrice = symbolAadapterEntity.symbol.h.toBigDecimal()
-                    }
                     getFiveSecondsAverageTradingVolume(symbolAadapterEntity, it.value, index)
                 }
             }
@@ -388,7 +367,7 @@ class MainActivity : BaseActivity(), MainContract.View {
         if (AppConfig.instance.sortByCoin) {
             adapterList.sortBy { it.symbol.s }
         } else if (AppConfig.instance.sortByGain24) {
-            adapterList.sortByDescending { it.gain24 }
+            adapterList.sortBy { it.lowPrecent }
         } else if (AppConfig.instance.sortByGain5m) {
             adapterList.sortByDescending { it.gain5m }
         } else {
@@ -435,67 +414,71 @@ class MainActivity : BaseActivity(), MainContract.View {
                 }
             }
             //报警条件 1
-            if (it.lastTradingVolume > 2) {
-                if (it.tenMinuteGain != null && it.tenMinuteGain > 0.toBigDecimal() && it.gain5m > 0.1.toBigDecimal() && it.gain24 > -5.toBigDecimal() && it.gain24 < 80.toBigDecimal()) {
-                    if (it.lastTradingVolume < 80) {
-                        try {
-                            if ((it.fiveSecondsAverageTradingVolume >= AppConfig.instance.Number5Muniteofalarms) && (it.fiveSecondStandardDeviation <= it.fiveSecondsAverageTradingVolume * 1.6) && it.isReachLow) {
-                                runOnUiThread { addAlarm(it, 0) }
-                            } else {
-                                if (AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.size > 30) {
-                                    var size = AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.size
-                                    if (AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.drop(size - 30).filter { it > 0 }.size > 20 && it.fiveSecondsAverageTradingVolume > 5) {
-                                        //KLog.i("30秒内，有20秒的交易次数不为0，报警")
-                                        runOnUiThread { addAlarm(it, 1) }
-                                    }
-                                }
-                            }
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-                    } else {
-                        runOnUiThread { addAlarm(it, 3) }
-                    }
-                }
-            }
+//            if (it.lastTradingVolume > 2) {
+//                if (it.tenMinuteGain != null && it.tenMinuteGain > 0.toBigDecimal() && it.gain5m > 0.1.toBigDecimal() && it.gain24 > -5.toBigDecimal() && it.gain24 < 80.toBigDecimal()) {
+//                    if (it.lastTradingVolume < 80) {
+//                        try {
+//                            if ((it.fiveSecondsAverageTradingVolume >= AppConfig.instance.Number5Muniteofalarms) && (it.fiveSecondStandardDeviation <= it.fiveSecondsAverageTradingVolume * 1.6) && it.isReachLow) {
+//                                runOnUiThread { addAlarm(it, 0) }
+//                            } else {
+//                                if (AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.size > 30) {
+//                                    var size = AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.size
+//                                    if (AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.drop(size - 30).filter { it > 0 }.size > 20 && it.fiveSecondsAverageTradingVolume > 5) {
+//                                        //KLog.i("30秒内，有20秒的交易次数不为0，报警")
+//                                        runOnUiThread { addAlarm(it, 1) }
+//                                    }
+//                                }
+//                            }
+//                        } catch (e: Exception) {
+//                            e.printStackTrace()
+//                        }
+//                    } else {
+//                        runOnUiThread { addAlarm(it, 3) }
+//                    }
+//                }
+//            }
 
 
         }
         runOnUiThread {
-            var maxTradeSymbolAdapterEntity = adapterList.filter { !it.symbol.s.equals("BTCUSDT") }.maxBy { it.twoMinuteTradeCount }
-            if (maxTradeSymbolAdapterEntity != null) {
-                if (showTitle.equals("韭菜宝典")) {
-                    showTitle = maxTradeSymbolAdapterEntity.symbol.s + " -> " + maxTradeSymbolAdapterEntity.coinEntity.decimal + "   " + maxTradeSymbolAdapterEntity.symbol.getc().toBigDecimal().setScale(maxTradeSymbolAdapterEntity.coinEntity.decimal, BigDecimal.ROUND_HALF_UP).toPlainString() + "  " + maxTradeSymbolAdapterEntity.symbol.p + "%  (" + maxTradeSymbolAdapterEntity.twoMinuteTradeCount + ")"
-                    AppConfig.instance.allSymbolTradMuniteVulm.forEach { s, mutableList ->
-                        if (AppConfig.instance.showSymbol.equals("")) {
-                            mustSymbol.setTextColor(resources.getColor(R.color.color_333))
-                            if (s.equals(maxTradeSymbolAdapterEntity.coinEntity.symbol)) {
-                                if (mutableList.size > 29) {
-                                    mustSymbolTrade.text = mutableList.asReversed().subList(0, 29).joinToString {
-                                        "$it "
-                                    }
-                                } else {
-                                    mustSymbolTrade.text = mutableList.asReversed().joinToString {
-                                        "$it "
+            try {
+                var maxTradeSymbolAdapterEntity = adapterList.filter { !it.symbol.s.equals("BTCUSDT") }.maxBy { it.twoMinuteTradeCount }
+                if (maxTradeSymbolAdapterEntity != null) {
+                    if (showTitle.equals("韭菜宝典")) {
+                        showTitle = maxTradeSymbolAdapterEntity.symbol.s + " -> " + maxTradeSymbolAdapterEntity.coinEntity.decimal + "   " + maxTradeSymbolAdapterEntity.symbol.getc()?.toBigDecimal()?.setScale(maxTradeSymbolAdapterEntity.coinEntity.decimal, BigDecimal.ROUND_HALF_UP)?.toPlainString() + "  " + maxTradeSymbolAdapterEntity.symbol.p + "%  (" + maxTradeSymbolAdapterEntity.twoMinuteTradeCount + ")"
+                        AppConfig.instance.allSymbolTradMuniteVulm.forEach { s, mutableList ->
+                            if (AppConfig.instance.showSymbol.equals("")) {
+                                mustSymbol.setTextColor(resources.getColor(R.color.color_333))
+                                if (s.equals(maxTradeSymbolAdapterEntity.coinEntity.symbol)) {
+                                    if (mutableList.size > 29) {
+                                        mustSymbolTrade.text = mutableList.asReversed().subList(0, 29).joinToString {
+                                            "$it "
+                                        }
+                                    } else {
+                                        mustSymbolTrade.text = mutableList.asReversed().joinToString {
+                                            "$it "
+                                        }
                                     }
                                 }
+                            } else {
+                                mustSymbol.setTextColor(resources.getColor(R.color.color_ff3669))
                             }
-                        } else {
-                            mustSymbol.setTextColor(resources.getColor(R.color.color_ff3669))
                         }
                     }
+                    tvTime.text = jiangeTime
+                    tvTime1.text = time + " " + "( " + maxTradeSymbolAdapterEntity.symbol.s + " " + maxTradeSymbolAdapterEntity.twoMinuteTradeCount + " )"
+                    EventBus.getDefault().post(com.huzhipeng.coin.entity.Notification(jiangeTime + "  " + time + " " + "(" + maxTradeSymbolAdapterEntity.symbol.s + " " + maxTradeSymbolAdapterEntity.twoMinuteTradeCount + ")", showTitle))
+                    allSymbolAdapter?.notifyDataSetChanged()
+                } else {
+                    tvTime.text = jiangeTime
+                    tvTime1.text = time
+                    EventBus.getDefault().post(com.huzhipeng.coin.entity.Notification(jiangeTime + "  " + time, showTitle, ""))
+                    allSymbolAdapter?.notifyDataSetChanged()
                 }
-                tvTime.text = jiangeTime
-                tvTime1.text = time + " " + "( " + maxTradeSymbolAdapterEntity.symbol.s + " " + maxTradeSymbolAdapterEntity.twoMinuteTradeCount + " )"
-                EventBus.getDefault().post(com.huzhipeng.coin.entity.Notification(jiangeTime + "  " + time + " " + "(" + maxTradeSymbolAdapterEntity.symbol.s + " " + maxTradeSymbolAdapterEntity.twoMinuteTradeCount + ")", showTitle))
-                allSymbolAdapter?.notifyDataSetChanged()
-            } else {
-                tvTime.text = jiangeTime
-                tvTime1.text = time
-                EventBus.getDefault().post(com.huzhipeng.coin.entity.Notification(jiangeTime + "  " + time, showTitle, ""))
-                allSymbolAdapter?.notifyDataSetChanged()
+                mustSymbol.text = showTitle
+            }  catch (e : Exception) {
+                e.printStackTrace()
             }
-            mustSymbol.text = showTitle
         }
     }
 
@@ -600,6 +583,19 @@ class MainActivity : BaseActivity(), MainContract.View {
             return
         }
         try {
+
+            if (symbolAadapterEntity.mustHeighPrice == null || symbolAadapterEntity.mustHeighPrice == BigDecimal.ZERO) {
+                symbolAadapterEntity.mustHeighPrice = symbolAadapterEntity.symbol.h.toBigDecimal()
+            }
+            if (symbolAadapterEntity.lowPrice == null || symbolAadapterEntity.mustHeighPrice == BigDecimal.ZERO) {
+                symbolAadapterEntity.lowPrice = symbolAadapterEntity.symbol.getl().toBigDecimal()
+            }
+            if (symbolAadapterEntity.price == null || symbolAadapterEntity.mustHeighPrice == BigDecimal.ZERO) {
+                symbolAadapterEntity.price = symbolAadapterEntity.symbol.getc().toBigDecimal()
+            }
+
+            symbolAadapterEntity.lowPrecent = (symbolAadapterEntity.price - symbolAadapterEntity.lowPrice).divide(symbolAadapterEntity.price, 6, BigDecimal.ROUND_HALF_UP)
+
             var list = arrayListOf<Int>()
             if (symbolList.size >= 10) {
                 symbolList.forEachIndexed { index, symbol ->
@@ -628,7 +624,7 @@ class MainActivity : BaseActivity(), MainContract.View {
             if (symbolList.size >= 2) {
                 symbolAadapterEntity.lastTradingVolume = symbolList[symbolList.size - 1].l - symbolList[symbolList.size - 2].l
                 if (AppConfig.instance.allSymbolTradMuniteVulm.get(symbolAadapterEntity.coinEntity.symbol) == null) {
-                    AppConfig.instance.allSymbolTradMuniteVulm.put(symbolAadapterEntity.coinEntity.symbol, mutableListOf(symbolAadapterEntity.lastTradingVolume))
+//                    AppConfig.instance.allSymbolTradMuniteVulm.put(symbolAadapterEntity.coinEntity.symbol, mutableListOf(symbolAadapterEntity.lastTradingVolume))
                 } else {
                     AppConfig.instance.allSymbolTradMuniteVulm.get(symbolAadapterEntity.coinEntity.symbol)?.add(symbolAadapterEntity.lastTradingVolume)
                     //记录一个小时的交易次数。
@@ -730,6 +726,7 @@ class MainActivity : BaseActivity(), MainContract.View {
         override fun onMessage(webSocket: WebSocket?, text: String?) {
             super.onMessage(webSocket, text)
             index++
+            KLog.i("on Message")
             if (!text!!.contains("BTC")) {
                 output("服务器端发送来的信息：" + text!!)
             } else {

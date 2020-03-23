@@ -33,7 +33,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "AIONBTC",
     "amount" : 3.18,
@@ -89,7 +89,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "ATOMBTC",
     "amount" : 2.36,
@@ -295,7 +295,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "EDOBTC",
     "amount" : 0.88,
@@ -398,7 +398,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "XTZBTC",
     "amount" : 8.0,
@@ -406,7 +406,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "GVTBTC",
     "amount" : 0.044,
@@ -422,7 +422,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "HCBTC",
     "amount" : 0.84,
@@ -430,7 +430,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "ICXBTC",
     "amount" : 8.0,
@@ -438,7 +438,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "INSBTC",
     "amount" : 0.5,
@@ -494,7 +494,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "LSKBTC",
     "amount" : 1.6,
@@ -502,7 +502,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "LUNBTC",
     "amount" : 0.03,
@@ -566,7 +566,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "NANOBTC",
     "amount" : 1.33,
@@ -574,7 +574,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "NASBTC",
     "amount" : 1.0,
@@ -582,7 +582,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "NAVBTC",
     "amount" : 0.68,
@@ -590,7 +590,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "NEBLBTC",
     "amount" : 0.16,
@@ -614,7 +614,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "NXSBTC",
     "unIngnoreTime": 0
@@ -637,7 +637,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "ONTBTC",
     "amount" : 10.0,
@@ -709,7 +709,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "PPTBTC",
     "amount" : 0.53,
@@ -781,7 +781,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "RLCBTC",
     "amount" : 0.8,
@@ -877,7 +877,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "VIABTC",
     "amount" : 0.23,
@@ -885,7 +885,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "VITEBTC",
     "unIngnoreTime": 0
@@ -924,14 +924,14 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "WANBTC",
     "unIngnoreTime": 0
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "WAVESBTC",
     "amount" : 1.0,
@@ -955,7 +955,7 @@
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "WTCBTC",
     "amount" : 0.7,

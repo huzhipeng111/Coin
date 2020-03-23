@@ -52,6 +52,9 @@ public class SymbolAdapterEntity {
     //5秒内的标准差
     private double fiveSecondStandardDeviation;
 
+    //最低价与现价的差值百分比
+    private BigDecimal lowPrecent;
+
     //10秒之内是否有6秒的交易次数大于6
     private boolean reachLow;
 
@@ -65,6 +68,36 @@ public class SymbolAdapterEntity {
 
     //24小时内的最高价
     private BigDecimal mustHeighPrice;
+
+    //24小时内最低价
+    private BigDecimal lowPrice;
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    //当前的价格
+    private BigDecimal price;
+
+    public BigDecimal getLowPrecent() {
+        return lowPrecent;
+    }
+
+    public void setLowPrecent(BigDecimal lowPrecent) {
+        this.lowPrecent = lowPrecent;
+    }
+
+    public BigDecimal getLowPrice() {
+        return lowPrice;
+    }
+
+    public void setLowPrice(BigDecimal lowPrice) {
+        this.lowPrice = lowPrice;
+    }
 
     //5分钟之前的价格
     private BigDecimal fiveMinutePrice;
