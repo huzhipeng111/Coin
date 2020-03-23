@@ -4,6 +4,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "ADABTC",
+    "amount" : 450.0,
     "unIngnoreTime": 0
   },
   {
@@ -11,13 +12,15 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "ADXBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "AEBTC",
+    "amount" : 3.0,
     "unIngnoreTime": 0
   },
   {
@@ -25,6 +28,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "AGIBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -32,6 +36,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "AIONBTC",
+    "amount" : 3.18,
     "unIngnoreTime": 0
   },
   {
@@ -39,6 +44,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "AMBBTC",
+    "amount" : 3.61,
     "unIngnoreTime": 0
   },
   {
@@ -46,6 +52,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "APPCBTC",
+    "amount" : 2.46,
     "unIngnoreTime": 0
   },
   {
@@ -53,13 +60,15 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "ARDRBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "ARKBTC",
+    "amount" : 1.4,
     "unIngnoreTime": 0
   },
   {
@@ -67,6 +76,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "ARNBTC",
+    "amount" : 0.2,
     "unIngnoreTime": 0
   },
   {
@@ -74,6 +84,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "ASTBTC",
+    "amount" : 5.0,
     "unIngnoreTime": 0
   },
   {
@@ -81,6 +92,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "ATOMBTC",
+    "amount" : 2.36,
     "unIngnoreTime": 0
   },
   {
@@ -94,21 +106,32 @@
     "coinType": 2,
     "decimal": 8,
     "inIgnore": true,
-    "symbol": "BANDBTC",
+    "symbol": "KAVABTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
     "coinType": 2,
-    "decimal": 6,
+    "decimal": 8,
     "inIgnore": true,
-    "symbol": "BCDBTC",
+    "symbol": "STXBTC",
+    "amount" : 20.0,
     "unIngnoreTime": 0
   },
   {
-    "coinType": 0,
-    "decimal": 6,
+    "coinType": 2,
+    "decimal": 8,
     "inIgnore": true,
-    "symbol": "BCHABCBTC",
+    "symbol": "NKNBTC",
+    "amount" : 10.0,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "BANDBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
@@ -116,6 +139,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "BCPTBTC",
+    "amount" : 1.16,
     "unIngnoreTime": 0
   },
   {
@@ -123,13 +147,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "BLZBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 0,
-    "decimal": 7,
-    "inIgnore": true,
-    "symbol": "BNBBTC",
+    "amount" : 5.0,
     "unIngnoreTime": 0
   },
   {
@@ -137,6 +155,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "BNTBTC",
+    "amount" : 0.7,
     "unIngnoreTime": 0
   },
   {
@@ -144,6 +163,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "BQXBTC",
+    "amount" : 2.2,
     "unIngnoreTime": 0
   },
   {
@@ -151,13 +171,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "BRDBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
-    "decimal": 6,
-    "inIgnore": true,
-    "symbol": "BTGBTC",
+    "amount" : 0.88,
     "unIngnoreTime": 0
   },
   {
@@ -165,6 +179,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "BTSBTC",
+    "amount" : 36.0,
     "unIngnoreTime": 0
   },
   {
@@ -172,6 +187,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "TOMOBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
@@ -179,6 +195,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "PERLBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -186,13 +203,7 @@
     "decimal": 2,
     "inIgnore": false,
     "symbol": "BTCUSDT",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 1,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "BTTBTC",
+    "amount" : 0.21,
     "unIngnoreTime": 0
   },
   {
@@ -200,13 +211,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "CDTBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 1,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "CELRBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -214,6 +219,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "CMTBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -221,6 +227,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "CNDBTC",
+    "amount" : 20.0,
     "unIngnoreTime": 0
   },
   {
@@ -228,13 +235,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "CVCBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
-    "decimal": 6,
-    "inIgnore": true,
-    "symbol": "DASHBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -242,27 +243,23 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "DATABTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
-    "coinType": 2,
+    "coinType": 0,
     "decimal": 6,
     "inIgnore": true,
     "symbol": "DCRBTC",
+    "amount" : 0.21,
     "unIngnoreTime": 0
   },
   {
-    "coinType": 1,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "DENTBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
+    "coinType": 0,
     "decimal": 6,
     "inIgnore": true,
     "symbol": "DGDBTC",
+    "amount" : 0.02,
     "unIngnoreTime": 0
   },
   {
@@ -270,6 +267,15 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "DLTBTC",
+    "amount" : 1.3,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "OGNBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -277,6 +283,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "DNTBTC",
+    "amount" : 100.0,
     "unIngnoreTime": 0
   },
   {
@@ -291,6 +298,15 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "EDOBTC",
+    "amount" : 0.88,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "ARPABTC",
+    "amount" : 20.0,
     "unIngnoreTime": 0
   },
   {
@@ -298,6 +314,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "ELFBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -305,6 +322,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "ENGBTC",
+    "amount" : 1.5,
     "unIngnoreTime": 0
   },
   {
@@ -312,27 +330,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "ENJBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 0,
-    "decimal": 7,
-    "inIgnore": true,
-    "symbol": "EOSBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 0,
-    "decimal": 6,
-    "inIgnore": true,
-    "symbol": "ETCBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 0,
-    "decimal": 6,
-    "inIgnore": true,
-    "symbol": "ETHBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -340,6 +338,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "EVXBTC",
+    "amount" : 0.22,
     "unIngnoreTime": 0
   },
   {
@@ -347,6 +346,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "FETBTC",
+    "amount" : 11.5,
     "unIngnoreTime": 0
   },
   {
@@ -354,20 +354,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "FTMBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 1,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "FUELBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 1,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "FUNBTC",
+    "amount" : 31.0,
     "unIngnoreTime": 0
   },
   {
@@ -375,6 +362,7 @@
     "decimal": 6,
     "inIgnore": true,
     "symbol": "GASBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
@@ -382,6 +370,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "GNTBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -396,6 +385,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "GRSBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
@@ -403,13 +393,15 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "GTOBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
     "coinType": 2,
-    "decimal": 8,
+    "decimal": 7,
     "inIgnore": true,
     "symbol": "XTZBTC",
+    "amount" : 8.0,
     "unIngnoreTime": 0
   },
   {
@@ -417,6 +409,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "GVTBTC",
+    "amount" : 0.044,
     "unIngnoreTime": 0
   },
   {
@@ -424,6 +417,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "GXSBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
@@ -431,13 +425,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "HCBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 1,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "HOTBTC",
+    "amount" : 0.84,
     "unIngnoreTime": 0
   },
   {
@@ -445,6 +433,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "ICXBTC",
+    "amount" : 8.0,
     "unIngnoreTime": 0
   },
   {
@@ -452,13 +441,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "INSBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 0,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "IOSTBTC",
+    "amount" : 0.5,
     "unIngnoreTime": 0
   },
   {
@@ -466,20 +449,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "IOTABTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 1,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "IOTXBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 1,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "KEYBTC",
+    "amount" : 28.0,
     "unIngnoreTime": 0
   },
   {
@@ -487,6 +457,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "KNCBTC",
+    "amount" : 2.1,
     "unIngnoreTime": 0
   },
   {
@@ -494,6 +465,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "LENDBTC",
+    "amount" : 13.0,
     "unIngnoreTime": 0
   },
   {
@@ -501,6 +473,7 @@
     "decimal": 8,
     "inIgnore": false,
     "symbol": "LINKBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -508,6 +481,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "LOOMBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -515,6 +489,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "LRCBTC",
+    "amount" : 14.0,
     "unIngnoreTime": 0
   },
   {
@@ -522,13 +497,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "LSKBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 0,
-    "decimal": 6,
-    "inIgnore": true,
-    "symbol": "LTCBTC",
+    "amount" : 1.6,
     "unIngnoreTime": 0
   },
   {
@@ -536,6 +505,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "LUNBTC",
+    "amount" : 0.03,
     "unIngnoreTime": 0
   },
   {
@@ -543,13 +513,15 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "MANABTC",
+    "amount" : 26.0,
     "unIngnoreTime": 0
   },
   {
-    "coinType": 1,
+    "coinType": 2,
     "decimal": 8,
     "inIgnore": true,
     "symbol": "MATICBTC",
+    "amount" : 100.0,
     "unIngnoreTime": 0
   },
   {
@@ -557,6 +529,7 @@
     "decimal": 6,
     "inIgnore": true,
     "symbol": "MCOBTC",
+    "amount" : 0.3,
     "unIngnoreTime": 0
   },
   {
@@ -564,13 +537,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "MDABTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 1,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "MFTBTC",
+    "amount" : 0.2,
     "unIngnoreTime": 0
   },
   {
@@ -578,6 +545,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "MITHBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -585,13 +553,15 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "MTHBTC",
+    "amount" : 4.0,
     "unIngnoreTime": 0
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "MTLBTC",
+    "amount" : 0.66,
     "unIngnoreTime": 0
   },
   {
@@ -599,6 +569,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "NANOBTC",
+    "amount" : 1.33,
     "unIngnoreTime": 0
   },
   {
@@ -606,6 +577,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "NASBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
@@ -613,13 +585,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "NAVBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 1,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "NCASHBTC",
+    "amount" : 0.68,
     "unIngnoreTime": 0
   },
   {
@@ -627,6 +593,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "NEBLBTC",
+    "amount" : 0.16,
     "unIngnoreTime": 0
   },
   {
@@ -634,13 +601,7 @@
     "decimal": 6,
     "inIgnore": true,
     "symbol": "NEOBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 1,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "NPXSBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
@@ -648,6 +609,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "NULSBTC",
+    "amount" : 0.85,
     "unIngnoreTime": 0
   },
   {
@@ -662,13 +624,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "OAXBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
-    "decimal": 7,
-    "inIgnore": true,
-    "symbol": "ALGOBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
@@ -676,6 +632,7 @@
     "decimal": 6,
     "inIgnore": true,
     "symbol": "OMGBTC",
+    "amount" : 1.4,
     "unIngnoreTime": 0
   },
   {
@@ -683,13 +640,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "ONTBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "ONEBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -697,13 +648,8 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "DUSKBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "COSBTC",
+
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -711,6 +657,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "OSTBTC",
+    "amount" : 8.0,
     "unIngnoreTime": 0
   },
   {
@@ -718,6 +665,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "PHBBTC",
+    "amount" : 14.0,
     "unIngnoreTime": 0
   },
   {
@@ -725,6 +673,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "CHZBTC",
+    "amount" : 8.8,
     "unIngnoreTime": 0
   },
   {
@@ -732,6 +681,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "PIVXBTC",
+    "amount" : 0.62,
     "unIngnoreTime": 0
   },
   {
@@ -746,6 +696,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "POLYBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -753,6 +704,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "POWRBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -760,13 +712,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "PPTBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "QKCBTC",
+    "amount" : 0.53,
     "unIngnoreTime": 0
   },
   {
@@ -774,6 +720,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "QLCBTC",
+    "amount" : 6.0,
     "unIngnoreTime": 0
   },
   {
@@ -781,6 +728,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "QSPBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -788,6 +736,7 @@
     "decimal": 6,
     "inIgnore": true,
     "symbol": "QTUMBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
@@ -795,6 +744,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "RCNBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -802,6 +752,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "RDNBTC",
+    "amount" : 0.05,
     "unIngnoreTime": 0
   },
   {
@@ -809,13 +760,15 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "RENBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
-    "coinType": 2,
+    "coinType": 0,
     "decimal": 6,
     "inIgnore": true,
     "symbol": "REPBTC",
+    "amount" : 0.11,
     "unIngnoreTime": 0
   },
   {
@@ -823,6 +776,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "REQBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -830,6 +784,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "RLCBTC",
+    "amount" : 0.8,
     "unIngnoreTime": 0
   },
   {
@@ -837,13 +792,15 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "RVNBTC",
+    "amount" : 210.0,
     "unIngnoreTime": 0
   },
   {
     "coinType": 2,
-    "decimal": 6,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "SKYBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
@@ -851,6 +808,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "SNGLSBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -858,6 +816,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "SNMBTC",
+    "amount" : 4.4,
     "unIngnoreTime": 0
   },
   {
@@ -865,13 +824,15 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "SNTBTC",
+    "amount" : 7.0,
     "unIngnoreTime": 0
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "STEEMBTC",
+    "amount" : 4.0,
     "unIngnoreTime": 0
   },
   {
@@ -879,13 +840,15 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "STORJBTC",
+    "amount" : 4.0,
     "unIngnoreTime": 0
   },
   {
     "coinType": 2,
-    "decimal": 7,
+    "decimal": 8,
     "inIgnore": true,
     "symbol": "STRATBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
@@ -893,13 +856,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "SYSBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "TFUELBTC",
+    "amount" : 8.8,
     "unIngnoreTime": 0
   },
   {
@@ -907,13 +864,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "THETABTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 1,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "TNBBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -921,13 +872,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "TNTBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 0,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "TRXBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -935,6 +880,14 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "VIABTC",
+    "amount" : 0.23,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 7,
+    "inIgnore": true,
+    "symbol": "VITEBTC",
     "unIngnoreTime": 0
   },
   {
@@ -942,6 +895,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "VIBBTC",
+    "amount" : 2.0,
     "unIngnoreTime": 0
   },
   {
@@ -949,6 +903,15 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "VIBEBTC",
+    "amount" : 2.67,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "LTOBTC",
+    "amount" : 4.5,
     "unIngnoreTime": 0
   },
   {
@@ -956,6 +919,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "WABIBTC",
+    "amount" : 1.0,
     "unIngnoreTime": 0
   },
   {
@@ -970,6 +934,15 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "WAVESBTC",
+    "amount" : 1.0,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 8,
+    "inIgnore": true,
+    "symbol": "WRXBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   },
   {
@@ -977,6 +950,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "WPRBTC",
+    "amount" : 7.5,
     "unIngnoreTime": 0
   },
   {
@@ -984,6 +958,7 @@
     "decimal": 7,
     "inIgnore": true,
     "symbol": "WTCBTC",
+    "amount" : 0.7,
     "unIngnoreTime": 0
   },
   {
@@ -991,6 +966,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "XEMBTC",
+    "amount" : 90.0,
     "unIngnoreTime": 0
   },
   {
@@ -998,20 +974,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "XLMBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
-    "decimal": 6,
-    "inIgnore": true,
-    "symbol": "XMRBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 0,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "XRPBTC",
+    "amount" : 200.0,
     "unIngnoreTime": 0
   },
   {
@@ -1019,6 +982,7 @@
     "decimal": 6,
     "inIgnore": true,
     "symbol": "XZCBTC",
+    "amount" : 0.214,
     "unIngnoreTime": 0
   },
   {
@@ -1026,27 +990,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "YOYOBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
-    "decimal": 6,
-    "inIgnore": true,
-    "symbol": "ZECBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
-    "decimal": 6,
-    "inIgnore": true,
-    "symbol": "ZENBTC",
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
-    "decimal": 8,
-    "inIgnore": true,
-    "symbol": "ZILBTC",
+    "amount" : 20.0,
     "unIngnoreTime": 0
   },
   {
@@ -1054,6 +998,7 @@
     "decimal": 8,
     "inIgnore": true,
     "symbol": "ZRXBTC",
+    "amount" : 10.0,
     "unIngnoreTime": 0
   }
 ]

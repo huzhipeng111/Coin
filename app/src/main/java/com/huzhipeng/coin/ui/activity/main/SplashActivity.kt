@@ -8,13 +8,16 @@ import com.huzhipeng.coin.R
 
 import com.huzhipeng.coin.application.AppConfig
 import com.huzhipeng.coin.base.BaseActivity
+import com.huzhipeng.coin.constant.ConstantValue
 import com.huzhipeng.coin.db.CoinEntity
 import com.huzhipeng.coin.entity.Symbol
+import com.huzhipeng.coin.ui.activity.huobi.HuobiMainActivity
 import com.huzhipeng.coin.ui.activity.main.component.DaggerSplashComponent
 import com.huzhipeng.coin.ui.activity.main.contract.SplashContract
 import com.huzhipeng.coin.ui.activity.main.module.SplashModule
 import com.huzhipeng.coin.ui.activity.main.presenter.SplashPresenter
 import com.huzhipeng.coin.utils.FileUtil
+import com.huzhipeng.coin.utils.SpUtil
 import com.socks.library.KLog
 import kotlinx.android.synthetic.main.activity_splash.*
 
@@ -43,7 +46,11 @@ class SplashActivity : BaseActivity(), SplashContract.View {
     override fun initData() {
         prepareData()
         appName.postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            if (SpUtil.getBoolean(this, ConstantValue.observationHuobi, false)) {
+                startActivity(Intent(this, HuobiMainActivity::class.java))
+            } else {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
             finish()
         }, 3000)
     }

@@ -33,10 +33,13 @@ import static android.support.v4.app.NotificationCompat.PRIORITY_DEFAULT;
 
 public class BackGroundService extends Service {
     NotificationCompat.Builder notification;
+    NotificationCompat.Builder huobiNotification;
     private Context mContext;
     private MediaPlayer bgmediaPlayer;
     private boolean isrun = true;
     NotificationManager manager;
+    private int binanceId = 313399;
+    private int huobiId = 313398;
 
     public BackGroundService() {
     }
@@ -83,6 +86,23 @@ public class BackGroundService extends Service {
                     .setVisibility(VISIBILITY_PUBLIC)
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     .setVisibility(Notification.VISIBILITY_PRIVATE);
+            huobiNotification = new NotificationCompat.Builder(mContext)
+                    .setChannelId(CHANNEL_ONE_ID)
+                    .setSmallIcon(R.drawable.ic_launcher_background)
+                    .setLargeIcon(BitmapFactory.decodeResource(Resources.getSystem(), R.mipmap.ic_launcher))
+                    .setWhen(System.currentTimeMillis())
+                    .setTicker(AppConfig.instance.getString(R.string.app_name))
+                    .setContentTitle(AppConfig.instance.getString(R.string.app_name))
+                    .setContentText("韭菜宝典正在后台运行")
+                    .setContentIntent(pendingIntent)
+                    .setOngoing(false)
+                    .setPriority(PRIORITY_DEFAULT)
+                    .setAutoCancel(false)
+                    .setWhen(0)
+                    .setSound(null)
+                    .setVisibility(VISIBILITY_PUBLIC)
+                    .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                    .setVisibility(Notification.VISIBILITY_PRIVATE);
         }else{
            notification = new NotificationCompat.Builder(mContext)
                     .setSmallIcon(R.drawable.ic_launcher_background)
@@ -97,9 +117,22 @@ public class BackGroundService extends Service {
                     .setWhen(0)
                     .setAutoCancel(false)
                     .setSound(null);
+            huobiNotification = new NotificationCompat.Builder(mContext)
+                    .setSmallIcon(R.drawable.ic_launcher_background)
+                    .setLargeIcon(BitmapFactory.decodeResource(Resources.getSystem(),R.mipmap.ic_launcher))
+                    .setTicker(AppConfig.instance.getString(R.string.app_name))
+                    .setContentTitle(AppConfig.instance.getString(R.string.app_name))
+                    .setContentText("韭菜宝典正在后台运行")
+                    .setContentIntent(pendingIntent)
+                    .setOngoing(false)
+                    .setPriority(PRIORITY_DEFAULT)
+                    .setVisibility(VISIBILITY_PUBLIC)
+                    .setWhen(0)
+                    .setAutoCancel(false)
+                    .setSound(null);
         }
         /*使用startForeground,如果id为0，那么notification将不会显示*/
-        startForeground(313399, notification.build());
+        startForeground(binanceId, notification.build());
         return START_STICKY;
     }
 
@@ -107,7 +140,11 @@ public class BackGroundService extends Service {
     public void onRefreshNotification(com.huzhipeng.coin.entity.Notification notification1) {
         notification.setContentTitle(notification1.getTitle());
         notification.setContentText(notification1.getContent());
-        manager.notify(313399, notification.build());
+        if (notification1.isBinance()) {
+            manager.notify(binanceId, notification.build());
+        } else {
+            manager.notify(binanceId, notification.build());
+        }
     }
 
     @Override

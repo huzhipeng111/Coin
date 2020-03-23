@@ -436,7 +436,7 @@ class MainActivity : BaseActivity(), MainContract.View {
             }
             //报警条件 1
             if (it.lastTradingVolume > 2) {
-                if (it.tenMinuteGain != null && it.tenMinuteGain > 0.toBigDecimal() && it.gain5m > 0.1.toBigDecimal() && it.gain24 > -5.toBigDecimal() && it.gain24 < 25.toBigDecimal()) {
+                if (it.tenMinuteGain != null && it.tenMinuteGain > 0.toBigDecimal() && it.gain5m > 0.1.toBigDecimal() && it.gain24 > -5.toBigDecimal() && it.gain24 < 80.toBigDecimal()) {
                     if (it.lastTradingVolume < 80) {
                         try {
                             if ((it.fiveSecondsAverageTradingVolume >= AppConfig.instance.Number5Muniteofalarms) && (it.fiveSecondStandardDeviation <= it.fiveSecondsAverageTradingVolume * 1.6) && it.isReachLow) {
@@ -444,8 +444,8 @@ class MainActivity : BaseActivity(), MainContract.View {
                             } else {
                                 if (AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.size > 30) {
                                     var size = AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.size
-                                    if (AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.drop(size - 30).filter { it > 0 }.size > 20) {
-                                        //KLog.i("30秒内，有15秒的交易次数不为0，报警")
+                                    if (AppConfig.instance.allSymbolTradMuniteVulm.get(it.coinEntity.symbol)!!.drop(size - 30).filter { it > 0 }.size > 20 && it.fiveSecondsAverageTradingVolume > 5) {
+                                        //KLog.i("30秒内，有20秒的交易次数不为0，报警")
                                         runOnUiThread { addAlarm(it, 1) }
                                     }
                                 }

@@ -33,6 +33,7 @@
         <activity android:name=".ui.activity.main.CourseActivity" />
         <activity android:name=".ui.activity.main.LogActivity" />
         <activity android:name=".ui.activity.main.CoinDetailActivity" />
+        <activity android:name=".ui.activity.huobi.HuobiMainActivity" />
 
         <service
             android:name=".service.BackGroundService"

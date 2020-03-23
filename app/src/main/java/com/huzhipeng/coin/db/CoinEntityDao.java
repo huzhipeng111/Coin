@@ -28,6 +28,7 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
         public final static Property UnIngnoreTime = new Property(3, long.class, "unIngnoreTime", false, "UN_INGNORE_TIME");
         public final static Property InIgnore = new Property(4, boolean.class, "inIgnore", false, "IN_IGNORE");
         public final static Property Decimal = new Property(5, int.class, "decimal", false, "DECIMAL");
+        public final static Property Amount = new Property(6, float.class, "amount", false, "AMOUNT");
     }
 
 
@@ -48,7 +49,8 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
                 "\"COIN_TYPE\" INTEGER NOT NULL ," + // 2: coinType
                 "\"UN_INGNORE_TIME\" INTEGER NOT NULL ," + // 3: unIngnoreTime
                 "\"IN_IGNORE\" INTEGER NOT NULL ," + // 4: inIgnore
-                "\"DECIMAL\" INTEGER NOT NULL );"); // 5: decimal
+                "\"DECIMAL\" INTEGER NOT NULL ," + // 5: decimal
+                "\"AMOUNT\" REAL NOT NULL );"); // 6: amount
     }
 
     /** Drops the underlying database table. */
@@ -74,6 +76,7 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
         stmt.bindLong(4, entity.getUnIngnoreTime());
         stmt.bindLong(5, entity.getInIgnore() ? 1L: 0L);
         stmt.bindLong(6, entity.getDecimal());
+        stmt.bindDouble(7, entity.getAmount());
     }
 
     @Override
@@ -93,6 +96,7 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
         stmt.bindLong(4, entity.getUnIngnoreTime());
         stmt.bindLong(5, entity.getInIgnore() ? 1L: 0L);
         stmt.bindLong(6, entity.getDecimal());
+        stmt.bindDouble(7, entity.getAmount());
     }
 
     @Override
@@ -108,7 +112,8 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
             cursor.getInt(offset + 2), // coinType
             cursor.getLong(offset + 3), // unIngnoreTime
             cursor.getShort(offset + 4) != 0, // inIgnore
-            cursor.getInt(offset + 5) // decimal
+            cursor.getInt(offset + 5), // decimal
+            cursor.getFloat(offset + 6) // amount
         );
         return entity;
     }
@@ -121,6 +126,7 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
         entity.setUnIngnoreTime(cursor.getLong(offset + 3));
         entity.setInIgnore(cursor.getShort(offset + 4) != 0);
         entity.setDecimal(cursor.getInt(offset + 5));
+        entity.setAmount(cursor.getFloat(offset + 6));
      }
     
     @Override

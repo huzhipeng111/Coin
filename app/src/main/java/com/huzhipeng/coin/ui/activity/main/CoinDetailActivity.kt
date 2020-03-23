@@ -5,6 +5,7 @@ import com.huzhipeng.coin.R
 
 import com.huzhipeng.coin.application.AppConfig
 import com.huzhipeng.coin.base.BaseActivity
+import com.huzhipeng.coin.db.CoinEntityDao
 import com.huzhipeng.coin.ui.activity.main.component.DaggerCoinDetailComponent
 import com.huzhipeng.coin.ui.activity.main.contract.CoinDetailContract
 import com.huzhipeng.coin.ui.activity.main.module.CoinDetailModule
@@ -45,6 +46,7 @@ class CoinDetailActivity : BaseActivity(), CoinDetailContract.View {
         title.text = intent.getStringExtra("coin")
         AppConfig.instance.allSymbolTradMuniteVulm.forEach { s, mutableList ->
             if (s.equals(intent.getStringExtra("coin"))) {
+                tvCoinAmount.text = AppConfig.instance.daoSsesion.coinEntityDao.queryBuilder().where(CoinEntityDao.Properties.Symbol.eq(s)).list()[0].amount.toString() + " 亿"
                 var str = StringBuilder()
                 str.append(s)
                 mutableList.forEach {
@@ -56,7 +58,6 @@ class CoinDetailActivity : BaseActivity(), CoinDetailContract.View {
                         "涨幅为：" + symbolAadapterEntity.gain24 + "%\n 10秒钟的涨幅为：" + symbolAadapterEntity.tenMinuteGain + "%\n 5秒平均交易量为：" + symbolAadapterEntity.fiveSecondsAverageTradingVolume + " \n 5秒交易量标准差为：" + symbolAadapterEntity.fiveSecondStandardDeviation
             }
         }
-
 
         KLog.i("看每个token的交易情况")
         Observable.interval(0, 1, TimeUnit.SECONDS)//设置0延迟，每隔一秒发送一条数据

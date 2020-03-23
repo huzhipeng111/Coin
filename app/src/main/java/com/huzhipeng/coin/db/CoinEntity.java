@@ -18,18 +18,20 @@ public class CoinEntity {
     //是否在忽略期间
     private boolean inIgnore;
     private int decimal;
+    private float amount;
     @Generated(hash = 177697228)
     public CoinEntity() {
     }
-    @Generated(hash = 258337967)
+    @Generated(hash = 1855364954)
     public CoinEntity(Long id, String symbol, int coinType, long unIngnoreTime,
-            boolean inIgnore, int decimal) {
+            boolean inIgnore, int decimal, float amount) {
         this.id = id;
         this.symbol = symbol;
         this.coinType = coinType;
         this.unIngnoreTime = unIngnoreTime;
         this.inIgnore = inIgnore;
         this.decimal = decimal;
+        this.amount = amount;
     }
     public Long getId() {
         return this.id;
@@ -66,5 +68,11 @@ public class CoinEntity {
     }
     public void setDecimal(int decimal) {
         this.decimal = decimal;
+    }
+    public float getAmount() {
+        return this.amount;
+    }
+    public void setAmount(float amount) {
+        this.amount = amount;
     }
 }

@@ -26,12 +26,13 @@ object MathUtils {
         return (total / array.size).toDouble()
     }
 
+    //去掉交易量大于80 的秒，再求平均值
     fun average(array: MutableList<Int>): Double {
         var sum = 0
-        for (i in array.indices) {
+        for (i in array.filter { it < 80 }.indices) {
             sum += array[i]      //求出数组的总和
         }
-        return (sum / array.size).toDouble()
+        return (sum / array.filter { it < 80 }.size).toDouble()
     }
 
     /**

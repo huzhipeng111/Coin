@@ -1,5 +1,6 @@
 package com.huzhipeng.coin.ui.activity.main
 
+import android.content.Intent
 import android.os.Bundle
 import com.huzhipeng.coin.R
 
@@ -51,6 +52,7 @@ class ConfigActivity : BaseActivity(), ConfigContract.View {
         showZhuliu.isChecked = AppConfig.instance.showZhuliu
         observationBtc.isChecked = AppConfig.instance.observationBtc
         alarmAutoDismiss.isChecked = AppConfig.instance.alarmAutoDismiss
+        observationHuobi.isChecked = SpUtil.getBoolean(this, ConstantValue.observationHuobi, false)
         alarmVoice.setOnCheckedChangeListener { compoundButton, b ->
             AppConfig.instance.alarmVoice = b
             SpUtil.putBoolean(this, ConstantValue.alarmVoice, b)
@@ -77,6 +79,16 @@ class ConfigActivity : BaseActivity(), ConfigContract.View {
         alarmAutoDismiss.setOnCheckedChangeListener { compoundButton, b ->
             AppConfig.instance.alarmAutoDismiss = b
             SpUtil.putBoolean(this, ConstantValue.alarmAutoDismiss, b)
+        }
+        observationHuobi.setOnCheckedChangeListener { compoundButton, b ->
+            SpUtil.putBoolean(this, ConstantValue.observationHuobi, b)
+            observationHuobi.postDelayed({
+                val intent = Intent(this, SplashActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                android.os.Process.killProcess(android.os.Process.myPid())
+                System.exit(0)
+            }, 1000)
         }
     }
 
