@@ -21,8 +21,6 @@ class AllSymbolAdapter(arrayList: MutableList<SymbolAdapterEntity>) : BaseQuickA
         } else {
             helper.setText(R.id.price, item.symbol.lastPrice.setScale(item.coinEntity.decimal, BigDecimal.ROUND_HALF_UP).toPlainString())
         }
-        helper.setText(R.id.tradeAveCount, "" + item?.fiveSecondsAverageTradingVolume)
-        helper.setText(R.id.muniteAradeAveCount, "" + item?.lastTradingVolume)
         if (item?.gain5m == null) {
             helper.setText(R.id.gain5m, "-- %")
         } else {

@@ -23,7 +23,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 
 import java.lang.reflect.Field;

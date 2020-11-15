@@ -1,5 +1,4 @@
 package com.huzhipeng.coin.ui.activity.main.presenter
-import android.support.annotation.NonNull
 import com.huzhipeng.coin.data.api.HttpAPIWrapper
 import com.huzhipeng.coin.ui.activity.main.contract.CourseContract
 import com.huzhipeng.coin.ui.activity.main.CourseActivity

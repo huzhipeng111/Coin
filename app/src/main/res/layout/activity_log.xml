@@ -11,13 +11,13 @@
         android:layout_height="@dimen/x94">
         <include layout="@layout/ease_search_bar"/>
     </LinearLayout>
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:id="@+id/recyclerView"
 
         android:scrollbars="vertical"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

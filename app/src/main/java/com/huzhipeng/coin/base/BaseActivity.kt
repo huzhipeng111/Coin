@@ -5,13 +5,13 @@ import android.content.Intent
 import android.graphics.Point
 import android.os.Build
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.huzhipeng.coin.R
 import com.huzhipeng.coin.utils.UIUtils
 import com.jaeger.library.StatusBarUtil
@@ -62,12 +62,6 @@ abstract class BaseActivity : AppCompatActivity(), ActivityDelegate {
         initData()
     }
 
-
-    override fun onSaveInstanceState(outState: Bundle?) {
-        super.onSaveInstanceState(outState)
-        outState?.putString("baseSave", "base")
-
-    }
 
     override fun onDestroy() {
         super.onDestroy()

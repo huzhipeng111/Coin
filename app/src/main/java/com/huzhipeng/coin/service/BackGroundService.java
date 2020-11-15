@@ -12,7 +12,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.IBinder;
-import android.support.v4.app.NotificationCompat;
 
 import com.huzhipeng.coin.R;
 import com.huzhipeng.coin.application.AppConfig;
@@ -23,8 +22,10 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import androidx.core.app.NotificationCompat;
+
 import static android.app.Notification.VISIBILITY_PUBLIC;
-import static android.support.v4.app.NotificationCompat.PRIORITY_DEFAULT;
+import static androidx.core.app.NotificationCompat.PRIORITY_DEFAULT;
 
 
 /**

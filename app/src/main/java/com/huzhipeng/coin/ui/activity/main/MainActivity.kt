@@ -7,13 +7,13 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Vibrator
 import android.provider.Settings
-import android.support.v4.view.LayoutInflaterCompat
-import android.support.v4.view.LayoutInflaterFactory
 import android.view.InflateException
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
+import androidx.core.view.LayoutInflaterCompat
+import androidx.core.view.LayoutInflaterFactory
 import com.alibaba.fastjson.JSONObject
 import com.alibaba.fastjson.JSONPObject
 import com.github.salomonbrys.kotson.fromJson
@@ -48,6 +48,7 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.math.BigDecimal
+import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -92,15 +93,13 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
     override fun initData() {
-//        val backGroundService = Intent(this, BackGroundService::class.java)
-//        this.startService(backGroundService)
 
         EventBus.getDefault().register(this)
         mVibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
         setMonitorCoin(CoinEntity())
         allSymbol10AllMuMap = hashMapOf()
         alarmAllMap = hashMapOf()
-        mediaPlayer = MediaPlayer.create(this, R.raw.voice)
+        mediaPlayer = MediaPlayer.create(this, R.raw.music8)
         mediaPlayer.setVolume(1f, 1f)
         setListener()
         if (Build.VERSION.SDK_INT >= 23) {
@@ -111,18 +110,6 @@ class MainActivity : BaseActivity(), MainContract.View {
             } else {
                 //TODO do something you need
             }
-        }
-        mustSymbol.setOnClickListener {
-            if ("".equals(AppConfig.instance.showSymbol)) {
-                mustSymbol.text.toString().split(" ").forEach {
-                    if (it.contains("BTC")) {
-                        AppConfig.instance.showSymbol = it
-                    }
-                }
-            } else {
-                AppConfig.instance.showSymbol = ""
-            }
-
         }
         tvTime1.setOnClickListener {
             tvTime1.text.toString().split(" ").forEach {
@@ -223,24 +210,6 @@ class MainActivity : BaseActivity(), MainContract.View {
             }
             symbol.setTextColor(resources.getColor(R.color.color_333))
         }
-        muniteAradeAveCount.setOnClickListener {
-            AppConfig.instance.sortByGain5m = !AppConfig.instance.sortByGain5m
-            SpUtil.putBoolean(this, ConstantValue.sortByGain5m, AppConfig.instance.sortByGain5m)
-
-            AppConfig.instance.sortByCoin = false
-            SpUtil.putBoolean(this, ConstantValue.sortByCoin, false)
-
-            AppConfig.instance.sortByGain24 = false
-            SpUtil.putBoolean(this, ConstantValue.sortByGain24, false)
-
-            if (AppConfig.instance.sortByGain5m) {
-                muniteAradeAveCount.setTextColor(resources.getColor(R.color.color_f51818))
-            } else {
-                muniteAradeAveCount.setTextColor(resources.getColor(R.color.color_333))
-            }
-            symbol.setTextColor(resources.getColor(R.color.color_333))
-            gain24.setTextColor(resources.getColor(R.color.color_333))
-        }
         tvTime.setOnClickListener {
             startActivity(Intent(this, LogActivity::class.java).putExtra("type", "vum"))
         }
@@ -298,6 +267,7 @@ class MainActivity : BaseActivity(), MainContract.View {
      * 处理数据
      */
     fun handlerData(mutableList: MutableList<SymbolTickerEvent>, index: Int) {
+        //先把数据保存起来
         mutableList.forEach {
             if (allSymbol10AllMuMap.get(it.symbol) == null) {
                 allSymbol10AllMuMap.put(it.symbol, mutableListOf(it))
@@ -321,14 +291,10 @@ class MainActivity : BaseActivity(), MainContract.View {
             }
         }
         val c1: Comparator<SymbolAdapterEntity> = Comparator { o1, o2 ->
-            if (o2.lastTradingVolume != o1.lastTradingVolume) {
-                o2.lastTradingVolume.compareTo(o1.lastTradingVolume)
+            if (o1.gain24 != null && o2.gain24 != null) {
+                o2.gain24.compareTo(o1.gain24)
             } else {
-                if (o1.gain24 != null && o2.gain24 != null) {
-                    o2.gain24.compareTo(o1.gain24)
-                } else {
-                    0
-                }
+                0
             }
         }
 
@@ -336,95 +302,20 @@ class MainActivity : BaseActivity(), MainContract.View {
             adapterList.sortBy { it.symbol.symbol }
         } else if (AppConfig.instance.sortByGain24) {
             adapterList.sortByDescending { it.gain24 }
-        } else if (AppConfig.instance.sortByGain5m) {
-            adapterList.sortByDescending { it.lastTradingVolume }
         } else {
             adapterList.sortWith(c1)
         }
-        var time = ""
-        var jiangeTime = ""
-        var showTitle = getString(R.string.app_name)
         adapterList.forEachIndexed { index1, it ->
             if (it.symbol != null && index1 == 0) {
-                time = TimeUtil.getTimeYear(it.symbol.eventTime)
                 var xiangchaShiJian = (System.currentTimeMillis() - it.symbol.eventTime) / 1000
-                jiangeTime = ("相差的时间为：" + xiangchaShiJian)
                 if (xiangchaShiJian > 20) {
                     mSocket?.close(1000, "timeout")
                     KLog.i("超时重连了。。。")
                 }
             }
-            if (AppConfig.instance.showSymbol.equals("")) {
-
-            } else {
-                if (it.symbol.symbol.equals(AppConfig.instance.showSymbol)) {
-                    showTitle = it.symbol.symbol + " -> " + it.coinEntity.decimal + "  " + it.symbol.lastPrice.setScale(it.coinEntity.decimal, BigDecimal.ROUND_HALF_UP).toPlainString() + "  " + it.symbol.priceChange + "%  (" + it.twoMinuteTradeCount + ")"
-                    AppConfig.instance.allSymbolTradMuniteVulm.forEach { s, mutableList1 ->
-                        if (s.equals(AppConfig.instance.showSymbol)) {
-                            if (mutableList1.size > 29) {
-                                runOnUiThread {
-                                    mustSymbolTrade.text = mutableList1.asReversed().subList(0, 29).joinToString {
-                                        "$it "
-                                    }
-                                }
-                            } else {
-                                runOnUiThread {
-                                    mustSymbolTrade.text = mutableList1.asReversed().joinToString {
-                                        "$it "
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            //报警条件 1
-            if (it.lastTradingVolume > 2) {
-                if (it.lastTradingVolume < 90) {
-                } else {
-                    KLog.i("报警index= ${index}")
-                    KLog.i(it.symbol.toString())
-                    runOnUiThread { addAlarm(it, 3, index) }
-                }
-            }
-
-
         }
         runOnUiThread {
-            var maxTradeSymbolAdapterEntity = adapterList.maxBy { it.twoMinuteTradeCount }
-            if (maxTradeSymbolAdapterEntity != null) {
-                if (showTitle.equals(getString(R.string.app_name)) && maxTradeSymbolAdapterEntity.symbol.lastPrice != null) {
-                    showTitle = maxTradeSymbolAdapterEntity.symbol.symbol + " -> " + maxTradeSymbolAdapterEntity.symbol.lastPrice.toPlainString() + "  " + maxTradeSymbolAdapterEntity.symbol.priceChange + "%  (" + maxTradeSymbolAdapterEntity.twoMinuteTradeCount + ")"
-                    AppConfig.instance.allSymbolTradMuniteVulm.forEach { s, mutableList ->
-                        if (AppConfig.instance.showSymbol.equals("")) {
-                            mustSymbol.setTextColor(resources.getColor(R.color.color_333))
-                            if (s.equals(maxTradeSymbolAdapterEntity.coinEntity.symbol)) {
-                                if (mutableList.size > 29) {
-                                    mustSymbolTrade.text = mutableList.asReversed().subList(0, 29).joinToString {
-                                        "$it "
-                                    }
-                                } else {
-                                    mustSymbolTrade.text = mutableList.asReversed().joinToString {
-                                        "$it "
-                                    }
-                                }
-                            }
-                        } else {
-                            mustSymbol.setTextColor(resources.getColor(R.color.color_down))
-                        }
-                    }
-                }
-                tvTime.text = jiangeTime
-                tvTime1.text = time + " " + "( " + maxTradeSymbolAdapterEntity.symbol.symbol + " " + maxTradeSymbolAdapterEntity.twoMinuteTradeCount + " )"
-//                EventBus.getDefault().post(com.huzhipeng.coin.entity.Notification(jiangeTime + "  " + time + " " + "(" + maxTradeSymbolAdapterEntity.symbol.symbol + " " + maxTradeSymbolAdapterEntity.twoMinuteTradeCount + ")", showTitle))
-                allSymbolAdapter?.notifyDataSetChanged()
-            } else {
-                tvTime.text = jiangeTime
-                tvTime1.text = time
-//                EventBus.getDefault().post(com.huzhipeng.coin.entity.Notification(jiangeTime + "  " + time, showTitle, ""))
-                allSymbolAdapter?.notifyDataSetChanged()
-            }
-            mustSymbol.text = showTitle
+            allSymbolAdapter?.notifyDataSetChanged()
         }
     }
 
@@ -432,27 +323,18 @@ class MainActivity : BaseActivity(), MainContract.View {
      * 添加报警的symbol
      */
     private fun addAlarm(symbolAadapterEntity: SymbolAdapterEntity, type: Int, index: Int) {
-//        if (symbolAadapterEntity.symbol.symbol.equals("BTCUSDT") && !symbolAadapterEntity.coinEntity.inIgnore) {
-//            KLog.i("过滤掉比特币")
-//            return
-//        }
         KLog.i("触发报警了: " + symbolAadapterEntity.symbol.symbol)
         var alarmRecord = AlarmRecord()
         alarmRecord.symbol = symbolAadapterEntity.symbol.symbol
         alarmRecord.alarmTime = System.currentTimeMillis()
         alarmRecord.alarmPrice = symbolAadapterEntity.symbol.lastPrice.toPlainString()
-        alarmRecord.fiveSecondStandardDeviation = symbolAadapterEntity.fiveSecondStandardDeviation.toInt()
-        alarmRecord.fiveSecondsAverageTradingVolume = symbolAadapterEntity.fiveSecondsAverageTradingVolume.toInt()
         alarmRecord.alarmType = type
         alarmRecord.index = index
-        alarmRecord.yimiaojiaoyiliang = symbolAadapterEntity.lastTradingVolume
         alarmRecord.gainTimeJianju = AppConfig.instance.PriceGainOfSencond
         alarmRecord.gain = symbolAadapterEntity.gain5m.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()
         alarmRecord.gain24 = symbolAadapterEntity.gain24.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()
         AppConfig.instance.daoSsesion.alarmRecordDao.insert(alarmRecord)
-//        if (AppConfig.instance.daoSsesion.alarmRecordDao.loadAll().size > 100) {
-//            AppConfig.instance.daoSsesion.alarmRecordDao.deleteAll()
-//        }
+
         if (alarmAllMap.get(alarmRecord.symbol) == null) {
             alarmAllMap.put(alarmRecord.symbol, mutableListOf(alarmRecord))
         } else {
@@ -485,13 +367,11 @@ class MainActivity : BaseActivity(), MainContract.View {
 
     private fun getType(alarmType: Int, symbolAadapterEntity: SymbolAdapterEntity): String {
         if (alarmType == 0) {
-            return "平均交易次数 : " + symbolAadapterEntity.fiveSecondsAverageTradingVolume
         } else if (alarmType == 1) {
             return "超过20秒"
         } else if (alarmType == 2) {
             return "5分钟涨幅"
         } else if (alarmType == 3) {
-            return "最新一秒交易次数超过: " + symbolAadapterEntity.lastTradingVolume
         }
 
         return ""
@@ -524,52 +404,7 @@ class MainActivity : BaseActivity(), MainContract.View {
             return
         }
         try {
-            var list = arrayListOf<Long>()
             symbolAadapterEntity.gain24 = symbolAadapterEntity.symbol.priceChangePercent
-//            if (symbolList.size >= 10) {
-//                symbolList.forEachIndexed { index, symbol ->
-//                    if (index >= symbolList.size - 9) {
-//                        list.add(symbol.lastId - symbolList[index - 1].lastId)
-//                    }
-//                }
-//                symbolAadapterEntity.fiveSecondsAverageTradingVolume = MathUtils.average(list)
-//                symbolAadapterEntity.fiveSecondStandardDeviation = MathUtils.standardDeviation(list)
-//                symbolAadapterEntity.isReachLow = MathUtils.reachLow(list)
-//            } else {
-//                if (symbolList.size > 1) {
-//                    symbolList.forEachIndexed { index, symbol ->
-//                        if (index >= 1) {
-//                            list.add(symbol.lastId - symbolList[index - 1].lastId)
-//                        }
-//                    }
-//                    symbolAadapterEntity.fiveSecondsAverageTradingVolume = MathUtils.average(list)
-//                    symbolAadapterEntity.fiveSecondStandardDeviation = 0.toDouble()
-//                } else {
-//                    symbolAadapterEntity.fiveSecondsAverageTradingVolume = 0.toDouble()
-//                    symbolAadapterEntity.fiveSecondStandardDeviation = 0.toDouble()
-//                }
-//                symbolAadapterEntity.isReachLow = false
-//            }
-            if (symbolList.size >= 2) {
-                if (index == symbolList.last().index) {
-                    symbolAadapterEntity.lastTradingVolume = symbolList[symbolList.size - 1].lastId - symbolList[symbolList.size - 2].lastId
-                } else {
-                    symbolAadapterEntity.lastTradingVolume = 0
-                }
-//                if ("KNCUSDT".equals(symbolAadapterEntity.symbol.symbol)) {
-//                    KLog.i("KNCUSDT的交易量为：" + symbolAadapterEntity.lastTradingVolume)
-//                    KLog.i("KNCUSDT的最后id为：" + symbolList[symbolList.size - 1].lastId)
-//                }
-                if (AppConfig.instance.allSymbolTradMuniteVulm.get(symbolAadapterEntity.coinEntity.symbol) == null) {
-                    AppConfig.instance.allSymbolTradMuniteVulm.put(symbolAadapterEntity.coinEntity.symbol, mutableListOf(symbolAadapterEntity.lastTradingVolume))
-                } else {
-                    AppConfig.instance.allSymbolTradMuniteVulm.get(symbolAadapterEntity.coinEntity.symbol)?.add(symbolAadapterEntity.lastTradingVolume)
-                    //记录一个小时的交易次数。
-                    if (AppConfig.instance.allSymbolTradMuniteVulm.get(symbolAadapterEntity.coinEntity.symbol)!!.size > 3600) {
-                        AppConfig.instance.allSymbolTradMuniteVulm.get(symbolAadapterEntity.coinEntity.symbol)!!.removeAt(0)
-                    }
-                }
-            }
             if (symbolList.size >= AppConfig.instance.PriceGainOfSencond) {
                 var gain = ((symbolList[symbolList.size - 1].lastPrice) - symbolList[symbolList.size - AppConfig.instance.PriceGainOfSencond].lastPrice).divide(symbolList[symbolList.size - AppConfig.instance.PriceGainOfSencond].lastPrice, 4, BigDecimal.ROUND_HALF_UP)
                 symbolAadapterEntity.tenMinuteGain = gain.multiply(BigDecimal.valueOf(100))
@@ -581,32 +416,6 @@ class MainActivity : BaseActivity(), MainContract.View {
                     symbolAadapterEntity.tenMinuteGain = BigDecimal.ZERO
                 }
             }
-            if (symbolList.size >= 30) {
-                symbolAadapterEntity.twoMinuteTradeCount = symbolList.last().lastId - symbolList[symbolList.size - 30].lastId
-            } else {
-                symbolAadapterEntity.twoMinuteTradeCount = symbolList.last().lastId - symbolList.first().lastId
-            }
-            //存储5分钟之前的价格
-            if (symbolList.size >= 300) {
-                if (symbolList[0].eventTime / 1000 - symbolAadapterEntity.fiveMinuteTime <= 300) {
-
-                } else {
-                    symbolAadapterEntity.fiveMinuteTime = symbolList[symbolList.size - 301].eventTime / 1000
-                    symbolAadapterEntity.fiveMinutePrice = symbolList[symbolList.size - 301].lastPrice
-                }
-            } else if (symbolList.size != 1) {
-                if (symbolAadapterEntity.fiveMinuteTime != symbolList[0].eventTime / 1000 && symbolAadapterEntity.fiveMinuteTime != 0.toLong()) {
-
-                } else {
-                    symbolAadapterEntity.fiveMinuteTime = symbolList[0].eventTime / 1000
-                    symbolAadapterEntity.fiveMinutePrice = symbolList[0].lastPrice
-                }
-            } else {
-                symbolAadapterEntity.fiveMinuteTime = symbolList[0].eventTime / 1000
-                symbolAadapterEntity.fiveMinutePrice = symbolList[0].lastPrice
-            }
-            symbolAadapterEntity.gain5m = ((symbolList[symbolList.size - 1].lastPrice) - symbolAadapterEntity.fiveMinutePrice).divide(symbolAadapterEntity.fiveMinutePrice, 4, BigDecimal.ROUND_HALF_UP).multiply(BigDecimal.valueOf(100))
-            AppConfig.instance.allSymbolMap.put(symbolAadapterEntity.coinEntity.symbol, symbolAadapterEntity)
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -636,9 +445,6 @@ class MainActivity : BaseActivity(), MainContract.View {
             super.onMessage(webSocket, text)
             index++
             output("服务器端发送来的信息：" + text!!)
-//            if (!text!!.contains("BTC")) {
-//                output("服务器端发送来的信息：" + text!!)
-//            } else {
             var symbols = Gson().fromJson<MutableList<Symbol>>(text!!)
             var mutableList = mutableListOf<SymbolTickerEvent>()
             /**
@@ -666,24 +472,25 @@ class MainActivity : BaseActivity(), MainContract.View {
             symbols.forEach { jsonWrapper ->
                 val result = SymbolTickerEvent()
                 result.index = index
-                result.setEventType(jsonWrapper.e)
-                result.setEventTime(jsonWrapper.E)
-                result.setSymbol(jsonWrapper.s)
-                result.setPriceChange(jsonWrapper.p.toBigDecimal())
-                result.setPriceChangePercent(jsonWrapper.P.toBigDecimal())
-                result.setWeightedAvgPrice(jsonWrapper.w.toBigDecimal())
-                result.setLastPrice(jsonWrapper.c.toBigDecimal())
-                result.setLastQty(jsonWrapper.Q.toBigDecimal())
-                result.setOpen(jsonWrapper.o.toBigDecimal())
-                result.setHigh(jsonWrapper.h.toBigDecimal())
-                result.setLow(jsonWrapper.l.toBigDecimal())
-                result.setTotalTradedBaseAssetVolume(jsonWrapper.v.toBigDecimal())
-                result.setTotalTradedQuoteAssetVolume(jsonWrapper.q.toBigDecimal())
-                result.setOpenTime(jsonWrapper.O.toLong())
-                result.setCloseTime(jsonWrapper.C.toLong())
-                result.setFirstId(jsonWrapper.F.toLong())
-                result.setLastId(jsonWrapper.L.toLong())
-                result.setCount(jsonWrapper.n.toLong())
+
+                result.eventType = jsonWrapper.e
+                result.eventTime = jsonWrapper.E
+                result.symbol = jsonWrapper.s
+                result.priceChange = jsonWrapper.p.toBigDecimal()
+                result.priceChangePercent = jsonWrapper.P.toBigDecimal()
+                result.weightedAvgPrice = jsonWrapper.w.toBigDecimal()
+                result.lastPrice = jsonWrapper.c.toBigDecimal()
+                result.lastQty = jsonWrapper.Q.toBigDecimal()
+                result.open = jsonWrapper.o.toBigDecimal()
+                result.high = jsonWrapper.h.toBigDecimal()
+                result.low = jsonWrapper.l.toBigDecimal()
+                result.totalTradedBaseAssetVolume = jsonWrapper.v.toBigDecimal()
+                result.totalTradedQuoteAssetVolume = jsonWrapper.q.toBigDecimal()
+                result.openTime = jsonWrapper.O.toLong()
+                result.closeTime = jsonWrapper.C.toLong()
+                result.firstId = jsonWrapper.F.toLong()
+                result.lastId = jsonWrapper.L.toLong()
+                result.count = jsonWrapper.n.toLong()
                 mutableList.add(result)
             }
             try {

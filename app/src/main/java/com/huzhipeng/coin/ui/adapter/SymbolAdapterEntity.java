@@ -18,19 +18,13 @@ public class SymbolAdapterEntity {
         this.symbol = symbol;
     }
 
-    public double getFiveSecondsAverageTradingVolume() {
-        return fiveSecondsAverageTradingVolume;
-    }
-
     public SymbolAdapterEntity(CoinEntity coinEntity, SymbolTickerEvent symbol) {
         this.coinEntity = coinEntity;
         this.symbol = symbol;
         mustHeighPrice = BigDecimal.ZERO;
     }
 
-    public void setFiveSecondsAverageTradingVolume(double fiveSecondsAverageTradingVolume) {
-        this.fiveSecondsAverageTradingVolume = fiveSecondsAverageTradingVolume;
-    }
+
 
 
     public SymbolAdapterEntity(SymbolTickerEvent symbol) {
@@ -47,14 +41,7 @@ public class SymbolAdapterEntity {
 
     private CoinEntity coinEntity;
     private SymbolTickerEvent symbol;
-    //过去5条数据中的平均交易量
-    private double fiveSecondsAverageTradingVolume;
 
-    //5秒内的标准差
-    private double fiveSecondStandardDeviation;
-
-    //10秒之内是否有6秒的交易次数大于6
-    private boolean reachLow;
 
     public BigDecimal getMustHeighPrice() {
         return mustHeighPrice;
@@ -69,16 +56,9 @@ public class SymbolAdapterEntity {
 
     //5分钟之前的价格
     private BigDecimal fiveMinutePrice;
-    //两分钟之内的交易次数
-    private long twoMinuteTradeCount;
 
-    public long getTwoMinuteTradeCount() {
-        return twoMinuteTradeCount;
-    }
 
-    public void setTwoMinuteTradeCount(long twoMinuteTradeCount) {
-        this.twoMinuteTradeCount = twoMinuteTradeCount;
-    }
+
 
     public BigDecimal getFiveMinutePrice() {
         return fiveMinutePrice;
@@ -88,36 +68,6 @@ public class SymbolAdapterEntity {
         this.fiveMinutePrice = fiveMinutePrice;
     }
 
-    public long getFiveMinuteTime() {
-        return fiveMinuteTime;
-    }
-
-    public void setFiveMinuteTime(long fiveMinuteTime) {
-        this.fiveMinuteTime = fiveMinuteTime;
-    }
-
-    //记录5分钟之前价格的时间
-    private long fiveMinuteTime;
-
-
-    public boolean isReachLow() {
-        return reachLow;
-    }
-
-    public void setReachLow(boolean reachLow) {
-        this.reachLow = reachLow;
-    }
-
-    public double getFiveSecondStandardDeviation() {
-        return fiveSecondStandardDeviation;
-    }
-
-    public void setFiveSecondStandardDeviation(double fiveSecondStandardDeviation) {
-        this.fiveSecondStandardDeviation = fiveSecondStandardDeviation;
-    }
-
-    //最后一秒的交易量
-    private long lastTradingVolume;
 
     public BigDecimal getTenMinuteGain() {
         return tenMinuteGain;
@@ -151,12 +101,4 @@ public class SymbolAdapterEntity {
 
     //24小时的涨幅
     private BigDecimal gain24;
-
-    public long getLastTradingVolume() {
-        return lastTradingVolume;
-    }
-
-    public void setLastTradingVolume(long lastTradingVolume) {
-        this.lastTradingVolume = lastTradingVolume;
-    }
 }

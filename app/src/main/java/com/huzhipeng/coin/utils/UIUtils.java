@@ -8,12 +8,13 @@ import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.ContactsContract;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.view.WindowManager;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
 public class UIUtils {

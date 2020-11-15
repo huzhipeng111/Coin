@@ -14,11 +14,11 @@
             android:id="@+id/symbol"
             android:text="交易对"
             android:textSize="19sp"
-            android:layout_width="@dimen/x120"
+            android:layout_width="100dp"
             android:singleLine="true"
             android:gravity="center_vertical"
             android:ellipsize="end"
-            android:layout_height="@dimen/x80"
+            android:layout_height="@dimen/x90"
             android:layout_marginLeft="@dimen/x20"
             android:textColor="@color/color_333" />
 
@@ -63,16 +63,6 @@
             android:layout_width="@dimen/x30"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10"
-            android:gravity="center"
-            android:textColor="@color/color_333" />
-
-        <TextView
-            android:id="@+id/muniteAradeAveCount"
-            android:layout_width="@dimen/x60"
-            android:text="1秒"
-            android:textSize="19sp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x20"
             android:gravity="center"
             android:textColor="@color/color_333" />
 

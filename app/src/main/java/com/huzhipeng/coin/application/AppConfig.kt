@@ -1,6 +1,6 @@
 package com.huzhipeng.coin.application
 
-import android.support.multidex.MultiDexApplication
+import androidx.multidex.MultiDexApplication
 import com.huzhipeng.coin.BuildConfig
 import com.huzhipeng.coin.constant.ConstantValue
 import com.huzhipeng.coin.db.DaoMaster
@@ -36,7 +36,6 @@ class AppConfig : MultiDexApplication() {
     var showZhuliu = true
     var alarmAutoDismiss = true
     var showSymbol = ""
-    lateinit var allSymbolTradMuniteVulm : HashMap<String, MutableList<Long>>
     lateinit var allSymbolMap : HashMap<String, SymbolAdapterEntity>
     lateinit var daoSsesion : DaoSession
     var applicationComponent: AppComponent? = null
@@ -45,7 +44,6 @@ class AppConfig : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        allSymbolTradMuniteVulm = hashMapOf()
         allSymbolMap = hashMapOf()
         setupApplicationComponent()
         CrashReport.initCrashReport(this, "41de61a0b3", BuildConfig.LOG_DEBUG)

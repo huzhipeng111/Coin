@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:layout_below="@+id/view"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/title"
             android:layout_width="@dimen/x440"
             android:layout_height="wrap_content"
@@ -42,5 +42,5 @@
             android:text=""
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="@dimen/commemTextSize" />
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 </RelativeLayout>

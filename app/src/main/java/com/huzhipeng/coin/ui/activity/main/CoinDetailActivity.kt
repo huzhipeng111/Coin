@@ -44,18 +44,6 @@ class CoinDetailActivity : BaseActivity(), CoinDetailContract.View {
     }
     override fun initData() {
         title.text = intent.getStringExtra("coin")
-        AppConfig.instance.allSymbolTradMuniteVulm.forEach { s, mutableList ->
-            if (s.equals(intent.getStringExtra("coin"))) {
-                tvCoinAmount.text = AppConfig.instance.daoSsesion.coinEntityDao.queryBuilder().where(CoinEntityDao.Properties.Symbol.eq(s)).list()[0].amount.toString() + " 亿"
-                var str = StringBuilder()
-                str.append(s)
-                mutableList.forEach {
-                    str.append("  " + it)
-                }
-                tvContent.text = str
-                var symbolAadapterEntity = AppConfig.instance.allSymbolMap.get(s)!!
-            }
-        }
 
         KLog.i("看每个token的交易情况")
         Observable.interval(0, 1, TimeUnit.SECONDS)//设置0延迟，每隔一秒发送一条数据
@@ -68,20 +56,6 @@ class CoinDetailActivity : BaseActivity(), CoinDetailContract.View {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    AppConfig.instance.allSymbolTradMuniteVulm.forEach { s, mutableList ->
-                        if (s.equals(intent.getStringExtra("coin"))) {
-                            var str = StringBuilder()
-                            str.append(s)
-                            var list = arrayListOf<Long>()
-                            list.addAll(mutableList)
-                            list.reverse()
-                            list.forEach {
-                                str.append("  " + it)
-                            }
-                            tvContent.text = str.toString()
-                            var symbolAadapterEntity = AppConfig.instance.allSymbolMap.get(s)!!
-                        }
-                    }
                 }
     }
 

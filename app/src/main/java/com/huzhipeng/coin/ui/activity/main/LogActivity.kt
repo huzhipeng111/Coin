@@ -4,12 +4,12 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.view.LayoutInflaterCompat
-import android.support.v4.view.LayoutInflaterFactory
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import android.widget.TextView
+import androidx.core.view.LayoutInflaterCompat
+import androidx.core.view.LayoutInflaterFactory
 import com.huzhipeng.coin.R
 
 import com.huzhipeng.coin.application.AppConfig
@@ -134,15 +134,6 @@ class LogActivity : BaseActivity(), LogContract.View, LogUtil.OnLogListener {
 //            recyclerView.scrollToPosition(logAdapter!!.data.size)
         } else if (intent.getStringExtra("type").equals("vum")) {
             var list = mutableListOf<String>()
-            AppConfig.instance.allSymbolTradMuniteVulm.forEach { s, mutableList ->
-                var str = StringBuilder()
-                str.append(s)
-                mutableList.reverse()
-                mutableList.forEach {
-                    str.append("  " + it)
-                }
-                list.add(str.toString())
-            }
             logAdapter?.addData(list)
             recyclerView.adapter = logAdapter
         }

@@ -4,9 +4,13 @@ package com.huzhipeng.coin.entity;
 import java.math.BigDecimal;
 
 public class SymbolTickerEvent {
-
+    /**
+     *
+     */
     private String eventType;
-
+    /**
+     *
+     */
     private int index;
 
     public int getIndex() {
@@ -24,38 +28,73 @@ public class SymbolTickerEvent {
         this.symbol = symbol;
     }
 
+    /**
+     * 事件时间
+     */
     private Long eventTime;
-
+    /**
+     * 交易对名称
+     */
     private String symbol;
-
+    /**
+     * 24小时价格变化
+     */
     private BigDecimal priceChange;
-
+    /**
+     * 24小时价格变化(百分比)
+     */
     private BigDecimal priceChangePercent;
-
+    /**
+     * 平均价格
+     */
     private BigDecimal weightedAvgPrice;
-
+    /**
+     * 最新成交价格
+     */
     private BigDecimal lastPrice;
-
+    /**
+     * 最新成交价格上的成交量
+     */
     private BigDecimal lastQty;
-
+    /**
+     * 24小时内第一比成交的价格
+     */
     private BigDecimal open;
-
+    /**
+     * 24小时内最高成交价
+     */
     private BigDecimal high;
-
+    /**
+     * 24小时内最低成交加
+     */
     private BigDecimal low;
-
+    /**
+     * 24小时内成交量
+     */
     private BigDecimal totalTradedBaseAssetVolume;
-
+    /**
+     * 24小时内成交额
+     */
     private BigDecimal totalTradedQuoteAssetVolume;
-
+    /**
+     * 统计开始时间
+     */
     private Long openTime;
-
+    /**
+     * 统计关闭时间
+     */
     private Long closeTime;
-
+    /**
+     * 24小时内第一笔成交交易ID
+     */
     private Long firstId;
-
+    /**
+     * 24小时内最后一笔成交交易ID
+     */
     private Long lastId;
-
+    /**
+     * 24小时内成交数
+     */
     private Long count;
 
     public String getEventType() {

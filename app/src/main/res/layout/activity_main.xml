@@ -7,27 +7,6 @@
     android:orientation="vertical"
     tools:context="com.huzhipeng.coin.ui.activity.main.MainActivity">
 
-    <TextView
-        android:id="@+id/mustSymbol"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/x60"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="@dimen/x20"
-        android:layout_marginRight="@dimen/x20"
-        android:textColor="@color/color_333" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/x1"
-        android:background="@color/color_f2f2f2" />
-    <TextView
-        android:id="@+id/mustSymbolTrade"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/x70"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="@dimen/x20"
-        android:layout_marginRight="@dimen/x20"
-        android:textColor="@color/color_333" />
-
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/x1"
@@ -45,13 +24,13 @@
             android:layout_height="@dimen/x1"
             android:background="@color/color_f2f2f2" />
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
 
-        </android.support.v7.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
 

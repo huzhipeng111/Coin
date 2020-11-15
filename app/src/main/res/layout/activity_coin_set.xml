@@ -57,12 +57,12 @@
         android:layout_height="@dimen/x1"
         android:background="@color/color_f2f2f2" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

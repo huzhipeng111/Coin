@@ -2,13 +2,13 @@ package com.huzhipeng.coin.ui.activity.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.view.LayoutInflaterCompat
-import android.support.v4.view.LayoutInflaterFactory
 import android.view.InflateException
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
+import androidx.core.view.LayoutInflaterCompat
+import androidx.core.view.LayoutInflaterFactory
 import com.huzhipeng.coin.R
 
 import com.huzhipeng.coin.application.AppConfig

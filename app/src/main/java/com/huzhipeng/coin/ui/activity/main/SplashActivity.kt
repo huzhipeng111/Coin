@@ -11,7 +11,6 @@ import com.huzhipeng.coin.base.BaseActivity
 import com.huzhipeng.coin.constant.ConstantValue
 import com.huzhipeng.coin.db.CoinEntity
 import com.huzhipeng.coin.entity.Symbol
-import com.huzhipeng.coin.ui.activity.huobi.HuobiMainActivity
 import com.huzhipeng.coin.ui.activity.main.component.DaggerSplashComponent
 import com.huzhipeng.coin.ui.activity.main.contract.SplashContract
 import com.huzhipeng.coin.ui.activity.main.module.SplashModule
