@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="MissingTranslation" >>
-    <string name="app_name">韭菜宝典</string>
+    <string name="app_name">合约宝典</string>
     <string name="AvailableWiFi">WiFi</string>
     <string name="activity_splash_intro">The World\'s First Decentralized Mobile Network</string>
     <string name="powered">Powered by Blockchain</string>

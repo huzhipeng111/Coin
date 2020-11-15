@@ -12,21 +12,21 @@
 
         <TextView
             android:id="@+id/symbol"
-            android:layout_width="@dimen/x140"
+            android:layout_width="@dimen/x100"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x5"
             android:textColor="@color/color_333" />
 
         <TextView
             android:id="@+id/price"
-            android:layout_width="@dimen/x160"
+            android:layout_width="@dimen/x100"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x6"
             android:textColor="@color/color_333" />
 
         <TextView
             android:id="@+id/alarmTime"
-            android:layout_width="@dimen/x190"
+            android:layout_width="@dimen/x140"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x6"
             android:gravity="center"
@@ -41,6 +41,13 @@
             android:textColor="@color/color_333" />
         <TextView
             android:id="@+id/gain24"
+            android:layout_width="@dimen/x100"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x6"
+            android:gravity="center"
+            android:textColor="@color/color_333" />
+        <TextView
+            android:id="@+id/index"
             android:layout_width="@dimen/x100"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x6"

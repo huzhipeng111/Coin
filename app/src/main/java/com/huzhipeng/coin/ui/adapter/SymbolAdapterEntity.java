@@ -2,6 +2,7 @@ package com.huzhipeng.coin.ui.adapter;
 
 import com.huzhipeng.coin.db.CoinEntity;
 import com.huzhipeng.coin.entity.Symbol;
+import com.huzhipeng.coin.entity.SymbolTickerEvent;
 
 import java.math.BigDecimal;
 
@@ -9,11 +10,11 @@ public class SymbolAdapterEntity {
     public SymbolAdapterEntity() {
     }
 
-    public Symbol getSymbol() {
+    public SymbolTickerEvent getSymbol() {
         return symbol;
     }
 
-    public void setSymbol(Symbol symbol) {
+    public void setSymbol(SymbolTickerEvent symbol) {
         this.symbol = symbol;
     }
 
@@ -21,7 +22,7 @@ public class SymbolAdapterEntity {
         return fiveSecondsAverageTradingVolume;
     }
 
-    public SymbolAdapterEntity(CoinEntity coinEntity, Symbol symbol) {
+    public SymbolAdapterEntity(CoinEntity coinEntity, SymbolTickerEvent symbol) {
         this.coinEntity = coinEntity;
         this.symbol = symbol;
         mustHeighPrice = BigDecimal.ZERO;
@@ -32,7 +33,7 @@ public class SymbolAdapterEntity {
     }
 
 
-    public SymbolAdapterEntity(Symbol symbol) {
+    public SymbolAdapterEntity(SymbolTickerEvent symbol) {
         this.symbol = symbol;
     }
 
@@ -45,7 +46,7 @@ public class SymbolAdapterEntity {
     }
 
     private CoinEntity coinEntity;
-    private Symbol symbol;
+    private SymbolTickerEvent symbol;
     //过去5条数据中的平均交易量
     private double fiveSecondsAverageTradingVolume;
 
@@ -69,13 +70,13 @@ public class SymbolAdapterEntity {
     //5分钟之前的价格
     private BigDecimal fiveMinutePrice;
     //两分钟之内的交易次数
-    private int twoMinuteTradeCount;
+    private long twoMinuteTradeCount;
 
-    public int getTwoMinuteTradeCount() {
+    public long getTwoMinuteTradeCount() {
         return twoMinuteTradeCount;
     }
 
-    public void setTwoMinuteTradeCount(int twoMinuteTradeCount) {
+    public void setTwoMinuteTradeCount(long twoMinuteTradeCount) {
         this.twoMinuteTradeCount = twoMinuteTradeCount;
     }
 
@@ -116,7 +117,7 @@ public class SymbolAdapterEntity {
     }
 
     //最后一秒的交易量
-    private int lastTradingVolume;
+    private long lastTradingVolume;
 
     public BigDecimal getTenMinuteGain() {
         return tenMinuteGain;
@@ -151,11 +152,11 @@ public class SymbolAdapterEntity {
     //24小时的涨幅
     private BigDecimal gain24;
 
-    public int getLastTradingVolume() {
+    public long getLastTradingVolume() {
         return lastTradingVolume;
     }
 
-    public void setLastTradingVolume(int lastTradingVolume) {
+    public void setLastTradingVolume(long lastTradingVolume) {
         this.lastTradingVolume = lastTradingVolume;
     }
 }

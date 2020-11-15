@@ -46,11 +46,7 @@ class SplashActivity : BaseActivity(), SplashContract.View {
     override fun initData() {
         prepareData()
         appName.postDelayed({
-            if (SpUtil.getBoolean(this, ConstantValue.observationHuobi, false)) {
-                startActivity(Intent(this, HuobiMainActivity::class.java))
-            } else {
-                startActivity(Intent(this, MainActivity::class.java))
-            }
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }, 3000)
     }
@@ -62,7 +58,6 @@ class SplashActivity : BaseActivity(), SplashContract.View {
             val coinJson = FileUtil.getAssetJson(AppConfig.instance, "defaultCoinSet.json")
             var coinEntitys = Gson().fromJson<MutableList<CoinEntity>>(coinJson)
             coinEntitys.sortBy { it.symbol }
-//            KLog.i(Gson().toJson(coinEntitys))
             AppConfig.instance!!.daoSsesion.coinEntityDao.insertInTx(coinEntitys)
         }
     }

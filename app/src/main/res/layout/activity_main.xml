@@ -35,77 +35,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x60"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <include layout="@layout/item_allsymbol"/>
 
-        <TextView
-            android:id="@+id/symbol"
-            android:layout_width="@dimen/x120"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@color/color_f2f2f2" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x20"
-            android:text="交易对"
-            android:textColor="@color/color_333" />
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager">
 
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="@dimen/x160"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x10"
-            android:text="价格"
-            android:textColor="@color/color_333" />
-
-        <TextView
-            android:id="@+id/tradeAveCount"
-            android:layout_width="@dimen/x60"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x10"
-            android:gravity="center"
-            android:text="5秒"
-            android:textColor="@color/color_333" />
-
-        <TextView
-            android:id="@+id/muniteAradeAveCount"
-            android:layout_width="@dimen/x60"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x10"
-            android:gravity="center"
-            android:text="1秒"
-            android:textColor="@color/color_333" />
-
-        <TextView
-            android:id="@+id/gain"
-            android:layout_width="@dimen/x120"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x10"
-            android:gravity="center"
-            android:text="涨幅10s"
-            android:textColor="@color/color_333" />
-
-        <TextView
-            android:id="@+id/gain24"
-            android:text="涨幅24h"
-            android:layout_width="@dimen/x120"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x10"
-            android:gravity="center"
-            android:textColor="@color/color_333" />
-
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/x1"
-        android:background="@color/color_f2f2f2" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
-
-    </android.support.v7.widget.RecyclerView>
 
     <View
         android:layout_width="match_parent"

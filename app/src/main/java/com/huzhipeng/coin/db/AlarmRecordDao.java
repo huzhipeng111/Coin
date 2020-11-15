@@ -31,9 +31,10 @@ public class AlarmRecordDao extends AbstractDao<AlarmRecord, Long> {
         public final static Property AlarmType = new Property(6, int.class, "alarmType", false, "ALARM_TYPE");
         public final static Property LastTradeVulm = new Property(7, int.class, "lastTradeVulm", false, "LAST_TRADE_VULM");
         public final static Property FiveSecondStandardDeviation = new Property(8, int.class, "fiveSecondStandardDeviation", false, "FIVE_SECOND_STANDARD_DEVIATION");
-        public final static Property FiveSecondsAverageTradingVolume = new Property(9, int.class, "fiveSecondsAverageTradingVolume", false, "FIVE_SECONDS_AVERAGE_TRADING_VOLUME");
-        public final static Property GainTimeJianju = new Property(10, int.class, "gainTimeJianju", false, "GAIN_TIME_JIANJU");
-        public final static Property Yimiaojiaoyiliang = new Property(11, int.class, "yimiaojiaoyiliang", false, "YIMIAOJIAOYILIANG");
+        public final static Property Index = new Property(9, int.class, "index", false, "INDEX");
+        public final static Property FiveSecondsAverageTradingVolume = new Property(10, int.class, "fiveSecondsAverageTradingVolume", false, "FIVE_SECONDS_AVERAGE_TRADING_VOLUME");
+        public final static Property GainTimeJianju = new Property(11, int.class, "gainTimeJianju", false, "GAIN_TIME_JIANJU");
+        public final static Property Yimiaojiaoyiliang = new Property(12, long.class, "yimiaojiaoyiliang", false, "YIMIAOJIAOYILIANG");
     }
 
 
@@ -58,9 +59,10 @@ public class AlarmRecordDao extends AbstractDao<AlarmRecord, Long> {
                 "\"ALARM_TYPE\" INTEGER NOT NULL ," + // 6: alarmType
                 "\"LAST_TRADE_VULM\" INTEGER NOT NULL ," + // 7: lastTradeVulm
                 "\"FIVE_SECOND_STANDARD_DEVIATION\" INTEGER NOT NULL ," + // 8: fiveSecondStandardDeviation
-                "\"FIVE_SECONDS_AVERAGE_TRADING_VOLUME\" INTEGER NOT NULL ," + // 9: fiveSecondsAverageTradingVolume
-                "\"GAIN_TIME_JIANJU\" INTEGER NOT NULL ," + // 10: gainTimeJianju
-                "\"YIMIAOJIAOYILIANG\" INTEGER NOT NULL );"); // 11: yimiaojiaoyiliang
+                "\"INDEX\" INTEGER NOT NULL ," + // 9: index
+                "\"FIVE_SECONDS_AVERAGE_TRADING_VOLUME\" INTEGER NOT NULL ," + // 10: fiveSecondsAverageTradingVolume
+                "\"GAIN_TIME_JIANJU\" INTEGER NOT NULL ," + // 11: gainTimeJianju
+                "\"YIMIAOJIAOYILIANG\" INTEGER NOT NULL );"); // 12: yimiaojiaoyiliang
     }
 
     /** Drops the underlying database table. */
@@ -101,9 +103,10 @@ public class AlarmRecordDao extends AbstractDao<AlarmRecord, Long> {
         stmt.bindLong(7, entity.getAlarmType());
         stmt.bindLong(8, entity.getLastTradeVulm());
         stmt.bindLong(9, entity.getFiveSecondStandardDeviation());
-        stmt.bindLong(10, entity.getFiveSecondsAverageTradingVolume());
-        stmt.bindLong(11, entity.getGainTimeJianju());
-        stmt.bindLong(12, entity.getYimiaojiaoyiliang());
+        stmt.bindLong(10, entity.getIndex());
+        stmt.bindLong(11, entity.getFiveSecondsAverageTradingVolume());
+        stmt.bindLong(12, entity.getGainTimeJianju());
+        stmt.bindLong(13, entity.getYimiaojiaoyiliang());
     }
 
     @Override
@@ -138,9 +141,10 @@ public class AlarmRecordDao extends AbstractDao<AlarmRecord, Long> {
         stmt.bindLong(7, entity.getAlarmType());
         stmt.bindLong(8, entity.getLastTradeVulm());
         stmt.bindLong(9, entity.getFiveSecondStandardDeviation());
-        stmt.bindLong(10, entity.getFiveSecondsAverageTradingVolume());
-        stmt.bindLong(11, entity.getGainTimeJianju());
-        stmt.bindLong(12, entity.getYimiaojiaoyiliang());
+        stmt.bindLong(10, entity.getIndex());
+        stmt.bindLong(11, entity.getFiveSecondsAverageTradingVolume());
+        stmt.bindLong(12, entity.getGainTimeJianju());
+        stmt.bindLong(13, entity.getYimiaojiaoyiliang());
     }
 
     @Override
@@ -160,9 +164,10 @@ public class AlarmRecordDao extends AbstractDao<AlarmRecord, Long> {
             cursor.getInt(offset + 6), // alarmType
             cursor.getInt(offset + 7), // lastTradeVulm
             cursor.getInt(offset + 8), // fiveSecondStandardDeviation
-            cursor.getInt(offset + 9), // fiveSecondsAverageTradingVolume
-            cursor.getInt(offset + 10), // gainTimeJianju
-            cursor.getInt(offset + 11) // yimiaojiaoyiliang
+            cursor.getInt(offset + 9), // index
+            cursor.getInt(offset + 10), // fiveSecondsAverageTradingVolume
+            cursor.getInt(offset + 11), // gainTimeJianju
+            cursor.getLong(offset + 12) // yimiaojiaoyiliang
         );
         return entity;
     }
@@ -178,9 +183,10 @@ public class AlarmRecordDao extends AbstractDao<AlarmRecord, Long> {
         entity.setAlarmType(cursor.getInt(offset + 6));
         entity.setLastTradeVulm(cursor.getInt(offset + 7));
         entity.setFiveSecondStandardDeviation(cursor.getInt(offset + 8));
-        entity.setFiveSecondsAverageTradingVolume(cursor.getInt(offset + 9));
-        entity.setGainTimeJianju(cursor.getInt(offset + 10));
-        entity.setYimiaojiaoyiliang(cursor.getInt(offset + 11));
+        entity.setIndex(cursor.getInt(offset + 9));
+        entity.setFiveSecondsAverageTradingVolume(cursor.getInt(offset + 10));
+        entity.setGainTimeJianju(cursor.getInt(offset + 11));
+        entity.setYimiaojiaoyiliang(cursor.getLong(offset + 12));
      }
     
     @Override

@@ -31,6 +31,16 @@ public class AlarmRecord {
     //5秒内的标准差
     private int fiveSecondStandardDeviation;
 
+    private int index;
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
     public int getFiveSecondStandardDeviation() {
         return fiveSecondStandardDeviation;
     }
@@ -90,12 +100,13 @@ public class AlarmRecord {
     private int gainTimeJianju;
 
     //报警时的那一秒的交易笔数
-    private int yimiaojiaoyiliang;
+    private long yimiaojiaoyiliang;
 
-    @Generated(hash = 1726303114)
+    @Generated(hash = 2081225311)
     public AlarmRecord(Long id, String symbol, long alarmTime, String alarmPrice, String gain,
             String gain24, int alarmType, int lastTradeVulm, int fiveSecondStandardDeviation,
-            int fiveSecondsAverageTradingVolume, int gainTimeJianju, int yimiaojiaoyiliang) {
+            int index, int fiveSecondsAverageTradingVolume, int gainTimeJianju,
+            long yimiaojiaoyiliang) {
         this.id = id;
         this.symbol = symbol;
         this.alarmTime = alarmTime;
@@ -105,6 +116,7 @@ public class AlarmRecord {
         this.alarmType = alarmType;
         this.lastTradeVulm = lastTradeVulm;
         this.fiveSecondStandardDeviation = fiveSecondStandardDeviation;
+        this.index = index;
         this.fiveSecondsAverageTradingVolume = fiveSecondsAverageTradingVolume;
         this.gainTimeJianju = gainTimeJianju;
         this.yimiaojiaoyiliang = yimiaojiaoyiliang;
@@ -170,11 +182,11 @@ public class AlarmRecord {
         this.gain24 = gain24;
     }
 
-    public int getYimiaojiaoyiliang() {
+    public long getYimiaojiaoyiliang() {
         return this.yimiaojiaoyiliang;
     }
 
-    public void setYimiaojiaoyiliang(int yimiaojiaoyiliang) {
+    public void setYimiaojiaoyiliang(long yimiaojiaoyiliang) {
         this.yimiaojiaoyiliang = yimiaojiaoyiliang;
     }
 

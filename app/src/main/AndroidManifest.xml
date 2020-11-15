@@ -34,11 +34,20 @@
         <activity android:name=".ui.activity.main.LogActivity" />
         <activity android:name=".ui.activity.main.CoinDetailActivity" />
         <activity android:name=".ui.activity.huobi.HuobiMainActivity" />
+        <activity android:name=".ui.activity.main.SingleTokenActivity" />
 
         <service
             android:name=".service.BackGroundService"
             android:enabled="true"
             android:exported="true" />
+
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="800" />
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="1600" />
+
     </application>
 
 </manifest>

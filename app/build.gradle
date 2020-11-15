@@ -101,7 +101,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
 
-    implementation 'io.neow3j:contract:2.2.0'
+    implementation project(':autosize')
 
 //    compile 'com.safframework.log:saf-log:1.5.1'
 //    implementation project(':saf-log')

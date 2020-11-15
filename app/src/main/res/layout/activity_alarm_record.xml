@@ -16,7 +16,7 @@
         <TextView
             android:id="@+id/symbol"
             android:text="交易对"
-            android:layout_width="@dimen/x140"
+            android:layout_width="@dimen/x100"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x5"
             android:textColor="@color/color_333" />
@@ -25,14 +25,14 @@
             android:id="@+id/price"
             android:text="价格"
 
-            android:layout_width="@dimen/x160"
+            android:layout_width="@dimen/x100"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x6"
             android:textColor="@color/color_333" />
 
         <TextView
             android:id="@+id/tradeAveCount"
-            android:layout_width="@dimen/x180"
+            android:layout_width="@dimen/x120"
             android:text="时间"
             android:gravity="center"
             android:layout_height="wrap_content"
@@ -48,6 +48,13 @@
         <TextView
             android:layout_width="@dimen/x100"
             android:text="涨幅24"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x6"
+            android:textColor="@color/color_333" />
+        <TextView
+            android:layout_width="@dimen/x100"
+            android:text="索引"
             android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x6"

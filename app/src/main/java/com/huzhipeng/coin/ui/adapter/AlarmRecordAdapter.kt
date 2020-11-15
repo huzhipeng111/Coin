@@ -14,5 +14,6 @@ class AlarmRecordAdapter(arrayList: MutableList<AlarmRecord>) : BaseQuickAdapter
         helper.setText(R.id.alarmTime, "" + TimeUtil.getTime(item.alarmTime))
         helper.setText(R.id.gain, "" + item.gain + " %")
         helper.setText(R.id.gain24, "" + item.gain24 + " %")
+        helper.setText(R.id.index, "" + item.index + "")
     }
 }

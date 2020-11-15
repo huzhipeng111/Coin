@@ -17,7 +17,7 @@ object MathUtils {
      *  * @throws <br></br>
      *  
      */
-    fun variance(array: MutableList<Int>): Double {
+    fun variance(array: MutableList<Long>): Double {
         val average = average(array)
         var total = 0
         for (i in array.indices) {
@@ -27,8 +27,8 @@ object MathUtils {
     }
 
     //去掉交易量大于80 的秒，再求平均值
-    fun average(array: MutableList<Int>): Double {
-        var sum = 0
+    fun average(array: MutableList<Long>): Double {
+        var sum = 0.toLong()
         for (i in array.filter { it < 80 }.indices) {
             sum += array[i]      //求出数组的总和
         }
@@ -51,22 +51,22 @@ object MathUtils {
      *  * @throws <br></br>
      *  
      */
-    fun standardDeviation(list: MutableList<Int>): Double {
+    fun standardDeviation(list: MutableList<Long>): Double {
         return Math.sqrt(variance(list))
     }
 
     @JvmStatic
     fun main(args: Array<String>) {
-        val array = intArrayOf(73, 4, 2, 0, 3, 16, 3, 1, 8, 0).toMutableList()
+        val array = longArrayOf(73, 4, 2, 0, 3, 16, 3, 1, 8, 0).toMutableList()
         println(standardDeviation(array))
         println(average(array))
-        val array1 = intArrayOf(81, 8, 5, 1, 4).toMutableList()
+        val array1 = longArrayOf(81, 8, 5, 1, 4).toMutableList()
         println(standardDeviation(array1))
         println(average(array1))
 
     }
 
-    fun reachLow(list: MutableList<Int>) : Boolean {
+    fun reachLow(list: MutableList<Long>) : Boolean {
         var count = 0
         list.forEach {
             if (it > 1) {

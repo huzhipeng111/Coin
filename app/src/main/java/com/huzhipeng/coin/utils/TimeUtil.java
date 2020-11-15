@@ -50,6 +50,14 @@ public class TimeUtil {
         SimpleDateFormat sdr = new SimpleDateFormat("MM-dd HH:mm:ss", Locale.CHINA);
         return sdr.format(new Date(timeStamp));
     }
+    public static String getTradeTime(long timeStamp) {
+        SimpleDateFormat sdr = new SimpleDateFormat("HH:mm:ss", Locale.CHINA);
+        return sdr.format(new Date(timeStamp));
+    }
+    public static String getTradeTimeMill(long timeStamp) {
+        SimpleDateFormat sdr = new SimpleDateFormat("HH:mm:ss.SSS", Locale.CHINA);
+        return sdr.format(new Date(timeStamp));
+    }
     public static String getTimeYear(long timeStamp) {
         SimpleDateFormat sdr = new SimpleDateFormat("HH:mm:ss", Locale.CHINA);
         return sdr.format(new Date(timeStamp));

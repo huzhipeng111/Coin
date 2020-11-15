@@ -8,9 +8,11 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.identityscope.IdentityScopeType;
 import org.greenrobot.greendao.internal.DaoConfig;
 
+import com.huzhipeng.coin.db.TickerDb;
 import com.huzhipeng.coin.db.AlarmRecord;
 import com.huzhipeng.coin.db.CoinEntity;
 
+import com.huzhipeng.coin.db.TickerDbDao;
 import com.huzhipeng.coin.db.AlarmRecordDao;
 import com.huzhipeng.coin.db.CoinEntityDao;
 
@@ -23,9 +25,11 @@ import com.huzhipeng.coin.db.CoinEntityDao;
  */
 public class DaoSession extends AbstractDaoSession {
 
+    private final DaoConfig tickerDbDaoConfig;
     private final DaoConfig alarmRecordDaoConfig;
     private final DaoConfig coinEntityDaoConfig;
 
+    private final TickerDbDao tickerDbDao;
     private final AlarmRecordDao alarmRecordDao;
     private final CoinEntityDao coinEntityDao;
 
@@ -33,22 +37,32 @@ public class DaoSession extends AbstractDaoSession {
             daoConfigMap) {
         super(db);
 
+        tickerDbDaoConfig = daoConfigMap.get(TickerDbDao.class).clone();
+        tickerDbDaoConfig.initIdentityScope(type);
+
         alarmRecordDaoConfig = daoConfigMap.get(AlarmRecordDao.class).clone();
         alarmRecordDaoConfig.initIdentityScope(type);
 
         coinEntityDaoConfig = daoConfigMap.get(CoinEntityDao.class).clone();
         coinEntityDaoConfig.initIdentityScope(type);
 
+        tickerDbDao = new TickerDbDao(tickerDbDaoConfig, this);
         alarmRecordDao = new AlarmRecordDao(alarmRecordDaoConfig, this);
         coinEntityDao = new CoinEntityDao(coinEntityDaoConfig, this);
 
+        registerDao(TickerDb.class, tickerDbDao);
         registerDao(AlarmRecord.class, alarmRecordDao);
         registerDao(CoinEntity.class, coinEntityDao);
     }
     
     public void clear() {
+        tickerDbDaoConfig.clearIdentityScope();
         alarmRecordDaoConfig.clearIdentityScope();
         coinEntityDaoConfig.clearIdentityScope();
+    }
+
+    public TickerDbDao getTickerDbDao() {
+        return tickerDbDao;
     }
 
     public AlarmRecordDao getAlarmRecordDao() {

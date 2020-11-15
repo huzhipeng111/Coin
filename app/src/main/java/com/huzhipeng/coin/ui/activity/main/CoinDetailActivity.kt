@@ -54,8 +54,6 @@ class CoinDetailActivity : BaseActivity(), CoinDetailContract.View {
                 }
                 tvContent.text = str
                 var symbolAadapterEntity = AppConfig.instance.allSymbolMap.get(s)!!
-                coinHangQing.text = " 价格为：" + symbolAadapterEntity.symbol.getc() + "\n " + "5分钟涨幅为：" + symbolAadapterEntity.gain5m + "%\n 24小时" +
-                        "涨幅为：" + symbolAadapterEntity.gain24 + "%\n 10秒钟的涨幅为：" + symbolAadapterEntity.tenMinuteGain + "%\n 5秒平均交易量为：" + symbolAadapterEntity.fiveSecondsAverageTradingVolume + " \n 5秒交易量标准差为：" + symbolAadapterEntity.fiveSecondStandardDeviation
             }
         }
 
@@ -74,7 +72,7 @@ class CoinDetailActivity : BaseActivity(), CoinDetailContract.View {
                         if (s.equals(intent.getStringExtra("coin"))) {
                             var str = StringBuilder()
                             str.append(s)
-                            var list = arrayListOf<Int>()
+                            var list = arrayListOf<Long>()
                             list.addAll(mutableList)
                             list.reverse()
                             list.forEach {
@@ -82,8 +80,6 @@ class CoinDetailActivity : BaseActivity(), CoinDetailContract.View {
                             }
                             tvContent.text = str.toString()
                             var symbolAadapterEntity = AppConfig.instance.allSymbolMap.get(s)!!
-                            coinHangQing.text = " 价格为：" + symbolAadapterEntity.symbol.getc() + "\n " + "5分钟涨幅为：" + symbolAadapterEntity.gain5m + "%\n 24小时" +
-                                    "涨幅为：" + symbolAadapterEntity.gain24 + "%\n 10秒钟的涨幅为：" + symbolAadapterEntity.tenMinuteGain + "%\n 5秒平均交易量为：" + symbolAadapterEntity.fiveSecondsAverageTradingVolume + " \n 5秒交易量标准差为：" + symbolAadapterEntity.fiveSecondStandardDeviation
                         }
                     }
                 }

@@ -36,7 +36,7 @@ class AppConfig : MultiDexApplication() {
     var showZhuliu = true
     var alarmAutoDismiss = true
     var showSymbol = ""
-    lateinit var allSymbolTradMuniteVulm : HashMap<String, MutableList<Int>>
+    lateinit var allSymbolTradMuniteVulm : HashMap<String, MutableList<Long>>
     lateinit var allSymbolMap : HashMap<String, SymbolAdapterEntity>
     lateinit var daoSsesion : DaoSession
     var applicationComponent: AppComponent? = null
