@@ -1,5 +1,6 @@
 package com.huzhipeng.coin.application
 
+import android.os.Handler
 import androidx.multidex.MultiDexApplication
 import com.huzhipeng.coin.BuildConfig
 import com.huzhipeng.coin.constant.ConstantValue
@@ -36,6 +37,7 @@ class AppConfig : MultiDexApplication() {
     var showZhuliu = true
     var alarmAutoDismiss = true
     var showSymbol = ""
+    var applicationHandler: Handler? = null
     lateinit var allSymbolMap : HashMap<String, SymbolAdapterEntity>
     lateinit var daoSsesion : DaoSession
     var applicationComponent: AppComponent? = null
@@ -65,6 +67,7 @@ class AppConfig : MultiDexApplication() {
         val helper = MySQLiteOpenHelper(this, "coin-db", null)
         daoSsesion = DaoMaster(helper.getWritableDatabase()).newSession()
         initResumeListener()
+        applicationHandler = Handler(getMainLooper())
     }
 
 

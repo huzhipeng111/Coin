@@ -21,6 +21,8 @@
         </activity>
         <activity android:name="com.huzhipeng.coin.ui.activity.main.ConfigActivity" />
         <activity android:name=".ui.activity.main.SplashActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +35,6 @@
         <activity android:name=".ui.activity.main.CourseActivity" />
         <activity android:name=".ui.activity.main.LogActivity" />
         <activity android:name=".ui.activity.main.CoinDetailActivity" />
-        <activity android:name=".ui.activity.huobi.HuobiMainActivity" />
         <activity android:name=".ui.activity.main.SingleTokenActivity" />
 
         <service

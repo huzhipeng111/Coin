@@ -51,7 +51,7 @@ class SplashActivity : BaseActivity(), SplashContract.View {
     }
 
     fun prepareData() {
-        AppConfig.instance!!.daoSsesion.coinEntityDao.deleteAll()
+//        AppConfig.instance!!.daoSsesion.coinEntityDao.deleteAll()
         var list = AppConfig.instance!!.daoSsesion.coinEntityDao.loadAll()
         if (list == null || list.size == 0) {
             val coinJson = FileUtil.getAssetJson(AppConfig.instance, "defaultCoinSet.json")

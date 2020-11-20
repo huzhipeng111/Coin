@@ -105,14 +105,6 @@
   },
   {
     "coinType": 2,
-    "decimal": 4,
-    "inIgnore": false,
-    "symbol": "ALGOUSDT",
-    "amount" : 450.0,
-    "unIngnoreTime": 0
-  },
-  {
-    "coinType": 2,
     "decimal": 6,
     "inIgnore": false,
     "symbol": "IOSTUSDT",
@@ -492,6 +484,22 @@
     "decimal": 5,
     "inIgnore": true,
     "symbol": "CVCUSDT",
+    "amount" : 450.0,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 5,
+    "inIgnore": true,
+    "symbol": "BELUSDT",
+    "amount" : 450.0,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 5,
+    "inIgnore": true,
+    "symbol": "CTKUSDT",
     "amount" : 450.0,
     "unIngnoreTime": 0
   }

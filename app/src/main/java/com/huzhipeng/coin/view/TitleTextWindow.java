@@ -14,6 +14,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -170,7 +171,7 @@ public class TitleTextWindow implements View.OnTouchListener {
         animShow();
         if (AppConfig.instance.getAlarmAutoDismiss()) {
             //10S后自动关闭
-            mHander.sendEmptyMessageDelayed(20, 8000);
+            mHander.sendEmptyMessageDelayed(20, 5000);
         }
     }
     /**
@@ -222,9 +223,9 @@ public class TitleTextWindow implements View.OnTouchListener {
 //                KLog.i(mContext.getPackageName());
 //                Intent intent = mContext.getPackageManager().getLaunchIntentForPackage(mContext.getPackageName());
 //                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                Intent intent = new Intent(mContext, CoinDetailActivity.class);
-                intent.putExtra("coin", coinEntity.getSymbol());
-                mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, CoinDetailActivity.class);
+//                intent.putExtra("coin", coinEntity.getSymbol());
+//                mContext.startActivity(intent);
             }
         });
 //        linearLayout.addView(titleView);

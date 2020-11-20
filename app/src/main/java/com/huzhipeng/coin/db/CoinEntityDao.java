@@ -29,6 +29,8 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
         public final static Property InIgnore = new Property(4, boolean.class, "inIgnore", false, "IN_IGNORE");
         public final static Property Decimal = new Property(5, int.class, "decimal", false, "DECIMAL");
         public final static Property Amount = new Property(6, float.class, "amount", false, "AMOUNT");
+        public final static Property HighPrice = new Property(7, float.class, "highPrice", false, "HIGH_PRICE");
+        public final static Property LowPrice = new Property(8, float.class, "lowPrice", false, "LOW_PRICE");
     }
 
 
@@ -50,7 +52,9 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
                 "\"UN_INGNORE_TIME\" INTEGER NOT NULL ," + // 3: unIngnoreTime
                 "\"IN_IGNORE\" INTEGER NOT NULL ," + // 4: inIgnore
                 "\"DECIMAL\" INTEGER NOT NULL ," + // 5: decimal
-                "\"AMOUNT\" REAL NOT NULL );"); // 6: amount
+                "\"AMOUNT\" REAL NOT NULL ," + // 6: amount
+                "\"HIGH_PRICE\" REAL NOT NULL ," + // 7: highPrice
+                "\"LOW_PRICE\" REAL NOT NULL );"); // 8: lowPrice
     }
 
     /** Drops the underlying database table. */
@@ -77,6 +81,8 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
         stmt.bindLong(5, entity.getInIgnore() ? 1L: 0L);
         stmt.bindLong(6, entity.getDecimal());
         stmt.bindDouble(7, entity.getAmount());
+        stmt.bindDouble(8, entity.getHighPrice());
+        stmt.bindDouble(9, entity.getLowPrice());
     }
 
     @Override
@@ -97,6 +103,8 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
         stmt.bindLong(5, entity.getInIgnore() ? 1L: 0L);
         stmt.bindLong(6, entity.getDecimal());
         stmt.bindDouble(7, entity.getAmount());
+        stmt.bindDouble(8, entity.getHighPrice());
+        stmt.bindDouble(9, entity.getLowPrice());
     }
 
     @Override
@@ -113,7 +121,9 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
             cursor.getLong(offset + 3), // unIngnoreTime
             cursor.getShort(offset + 4) != 0, // inIgnore
             cursor.getInt(offset + 5), // decimal
-            cursor.getFloat(offset + 6) // amount
+            cursor.getFloat(offset + 6), // amount
+            cursor.getFloat(offset + 7), // highPrice
+            cursor.getFloat(offset + 8) // lowPrice
         );
         return entity;
     }
@@ -127,6 +137,8 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
         entity.setInIgnore(cursor.getShort(offset + 4) != 0);
         entity.setDecimal(cursor.getInt(offset + 5));
         entity.setAmount(cursor.getFloat(offset + 6));
+        entity.setHighPrice(cursor.getFloat(offset + 7));
+        entity.setLowPrice(cursor.getFloat(offset + 8));
      }
     
     @Override

@@ -18,88 +18,238 @@
             <TextView
                 android:id="@+id/symbol"
                 android:text="交易对"
-                android:textSize="18sp"
-                android:layout_width="@dimen/x120"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
                 android:singleLine="true"
                 android:gravity="center_vertical"
                 android:ellipsize="end"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginLeft="6dp"
                 android:textColor="@color/color_333" />
-            <TextView
-                android:id="@+id/volum"
-                android:text="成交量"
-                android:textSize="13sp"
-                android:layout_width="@dimen/x120"
-                android:singleLine="true"
-                android:gravity="center_vertical"
-                android:ellipsize="end"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/x20"
-                android:textColor="@color/color_647e94" />
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/lowPrice"
-            android:singleLine="true"
-            android:text="最低价格"
-            android:textSize="19sp"
-            android:ellipsize="end"
-            android:layout_width="@dimen/x90"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x20"
-            android:textColor="@color/color_333" />
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/lowPrice"
+                android:singleLine="true"
+                android:text="最低价格"
+                android:textSize="16sp"
+                android:ellipsize="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_333" />
+
+            <TextView
+                android:id="@+id/setLow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="-/-"
+                android:textColor="@color/color_647e94"
+                android:textSize="13sp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/price"
             android:singleLine="true"
             android:text="价格"
-            android:textSize="19sp"
+            android:textSize="16sp"
             android:ellipsize="end"
             android:layout_width="@dimen/x90"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x20"
             android:textColor="@color/color_333" />
-
-        <TextView
-            android:id="@+id/heighPrice"
-            android:singleLine="true"
-            android:text="最高价格"
-            android:ellipsize="end"
-            android:textSize="19sp"
-            android:layout_width="@dimen/x90"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x20"
-            android:textColor="@color/color_333" />
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/heighPrice"
+                android:singleLine="true"
+                android:text="最高价格"
+                android:ellipsize="end"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_333" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/setHigh"
+                android:text="-/-"
+                android:textSize="13sp"
+                android:singleLine="true"
+                android:gravity="center_vertical"
+                android:ellipsize="end"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_647e94" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tradeAveCount"
             android:visibility="gone"
             android:text="1秒"
-            android:textSize="19sp"
+            android:textSize="16sp"
             android:layout_width="@dimen/x30"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10"
             android:gravity="center"
             android:textColor="@color/color_333" />
 
-        <TextView
-            android:id="@+id/gain5m"
-            android:layout_width="@dimen/x120"
-            android:text="涨跌5分"
-            android:textSize="19sp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/color_333" />
+        <LinearLayout
+            android:layout_width="90dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/gain5m"
+                android:layout_width="@dimen/x120"
+                android:text="涨跌5分"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_333" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/gain5mLow"
+                    android:textColor="@color/color_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="/"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/gain5mHigh"
+                    android:textColor="@color/color_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/gain24"
-            android:layout_width="@dimen/x120"
-            android:layout_height="wrap_content"
-            android:text="涨跌24h"
-            android:gravity="center"
-            android:textSize="19sp"
-            android:textColor="@color/color_333" />
+        <LinearLayout
+            android:layout_width="90dp"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/gain2"
+                android:layout_width="@dimen/x120"
+                android:layout_height="wrap_content"
+                android:text="涨跌2h"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/color_333" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/gain2HoursLow"
+                    android:textColor="@color/color_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="/"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/gain2HoursHigh"
+                    android:textColor="@color/color_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="90dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/gain6"
+                android:layout_width="@dimen/x120"
+                android:layout_height="wrap_content"
+                android:text="涨跌6h"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/color_333" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/gain6HoursLow"
+                    android:textColor="@color/color_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="/"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/gain6HoursHigh"
+                    android:textColor="@color/color_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="90dp"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/gain24"
+                android:layout_width="@dimen/x120"
+                android:layout_height="wrap_content"
+                android:text="涨跌24h"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/color_333" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/gain24HoursLow"
+                    android:textColor="@color/color_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="/"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/gain24HoursHigh"
+                    android:textColor="@color/color_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 

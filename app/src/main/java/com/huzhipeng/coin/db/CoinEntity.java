@@ -5,6 +5,8 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 import org.junit.Ignore;
 
+import java.math.BigDecimal;
+
 @Entity
 public class CoinEntity {
     @Id(autoincrement = true)
@@ -19,12 +21,15 @@ public class CoinEntity {
     private boolean inIgnore;
     private int decimal;
     private float amount;
+    private float highPrice;
+    private  float lowPrice;
     @Generated(hash = 177697228)
     public CoinEntity() {
     }
-    @Generated(hash = 1855364954)
+    @Generated(hash = 1631076269)
     public CoinEntity(Long id, String symbol, int coinType, long unIngnoreTime,
-            boolean inIgnore, int decimal, float amount) {
+            boolean inIgnore, int decimal, float amount, float highPrice,
+            float lowPrice) {
         this.id = id;
         this.symbol = symbol;
         this.coinType = coinType;
@@ -32,6 +37,8 @@ public class CoinEntity {
         this.inIgnore = inIgnore;
         this.decimal = decimal;
         this.amount = amount;
+        this.highPrice = highPrice;
+        this.lowPrice = lowPrice;
     }
     public Long getId() {
         return this.id;
@@ -74,5 +81,17 @@ public class CoinEntity {
     }
     public void setAmount(float amount) {
         this.amount = amount;
+    }
+    public float getHighPrice() {
+        return this.highPrice;
+    }
+    public void setHighPrice(float highPrice) {
+        this.highPrice = highPrice;
+    }
+    public float getLowPrice() {
+        return this.lowPrice;
+    }
+    public void setLowPrice(float lowPrice) {
+        this.lowPrice = lowPrice;
     }
 }
