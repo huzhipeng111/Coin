@@ -17,4 +17,5 @@ object ConstantValue {
     var sortByGain5m = "sortByGain5m"
     var alarmAutoDismiss = "alarmAutoDismiss"
     var observationHuobi = "observationHuobi"
+    var sleepModel = "sleepModel"
 }

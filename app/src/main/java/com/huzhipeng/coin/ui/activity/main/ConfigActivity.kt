@@ -49,6 +49,7 @@ class ConfigActivity : BaseActivity(), ConfigContract.View {
         alarmVoice.isChecked = AppConfig.instance.alarmVoice
         alarmVibrate.isChecked = AppConfig.instance.alarmVibrate
         showLaji.isChecked = AppConfig.instance.showLaji
+        sleepModel.isChecked = AppConfig.instance.sleepModel
         showZhuliu.isChecked = AppConfig.instance.showZhuliu
         observationBtc.isChecked = AppConfig.instance.observationBtc
         alarmAutoDismiss.isChecked = AppConfig.instance.alarmAutoDismiss
@@ -65,6 +66,11 @@ class ConfigActivity : BaseActivity(), ConfigContract.View {
             AppConfig.instance.showLaji = b
             SpUtil.putBoolean(this, ConstantValue.showLaji, b)
             EventBus.getDefault().post(CoinEntity())
+        }
+        sleepModel.setOnCheckedChangeListener { compoundButton, b ->
+            AppConfig.instance.sleepModel = b
+            SpUtil.putBoolean(this, ConstantValue.sleepModel, b)
+//            EventBus.getDefault().post(CoinEntity())
         }
         showZhuliu.setOnCheckedChangeListener { compoundButton, b ->
             AppConfig.instance.showZhuliu = b
@@ -105,7 +111,7 @@ class ConfigActivity : BaseActivity(), ConfigContract.View {
         AppConfig.instance.PriceGain = SpUtil.getInt(this, ConstantValue.PriceGain, 10)
         AppConfig.instance.TransactionGainOfSecond = SpUtil.getInt(this, ConstantValue.TransactionGainOfSecond, 10)
         AppConfig.instance.TransactionGain = SpUtil.getInt(this, ConstantValue.TransactionGain, 10)
-        EventBus.getDefault().post(CoinEntity())
+//        EventBus.getDefault().post(CoinEntity())
         super.onDestroy()
     }
 

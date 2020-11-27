@@ -502,5 +502,53 @@
     "symbol": "CTKUSDT",
     "amount" : 450.0,
     "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 4,
+    "inIgnore": true,
+    "symbol": "XRPUSDT",
+    "amount" : 450.0,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 3,
+    "inIgnore": true,
+    "symbol": "ETCUSDT",
+    "amount" : 450.0,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 5,
+    "inIgnore": true,
+    "symbol": "TRXUSDT",
+    "amount" : 450.0,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 5,
+    "inIgnore": true,
+    "symbol": "ALPHAUSDT",
+    "amount" : 450.0,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 2,
+    "inIgnore": true,
+    "symbol": "LTCUSDT",
+    "amount" : 450.0,
+    "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 3,
+    "inIgnore": true,
+    "symbol": "ZENUSDT",
+    "amount" : 450.0,
+    "unIngnoreTime": 0
   }
 ]

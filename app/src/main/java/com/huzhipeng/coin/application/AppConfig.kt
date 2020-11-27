@@ -37,6 +37,7 @@ class AppConfig : MultiDexApplication() {
     var showZhuliu = true
     var alarmAutoDismiss = true
     var showSymbol = ""
+    var sleepModel = false
     var applicationHandler: Handler? = null
     lateinit var allSymbolMap : HashMap<String, SymbolAdapterEntity>
     lateinit var daoSsesion : DaoSession
@@ -64,6 +65,7 @@ class AppConfig : MultiDexApplication() {
         sortByGain24 = SpUtil.getBoolean(this, ConstantValue.sortByGain24, false)
         sortByGain5m = SpUtil.getBoolean(this, ConstantValue.sortByGain5m, false)
         alarmAutoDismiss = SpUtil.getBoolean(this, ConstantValue.alarmAutoDismiss, false)
+        sleepModel = SpUtil.getBoolean(this, ConstantValue.sleepModel, false)
         val helper = MySQLiteOpenHelper(this, "coin-db", null)
         daoSsesion = DaoMaster(helper.getWritableDatabase()).newSession()
         initResumeListener()

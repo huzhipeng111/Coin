@@ -272,14 +272,20 @@ class MainActivity : BaseActivity(), MainContract.View {
                     symbolAadapterEntity.symbol = it
                     symbolAadapterEntity.update(index)
                     //破新高报警
-                    if (symbolAadapterEntity.fiveMinuteHighTimes >= 5 && symbolAadapterEntity.highPriceList!!.size > 20 && (symbolAadapterEntity.highPriceList!!.last().lastPrice > symbolAadapterEntity.highPriceList!![symbolAadapterEntity!!.highPriceList!!.size - 2].lastPrice) && symbolAadapterEntity.symbol.lastPrice >= symbolAadapterEntity.symbol.high) {
+                    if (symbolAadapterEntity.symbol.totalTradedQuoteAssetVolume >= 15000000.toBigDecimal() && symbolAadapterEntity.fiveMinuteHighTimes >= 8 && symbolAadapterEntity.highPriceList!!.size >= 20 && (symbolAadapterEntity.highPriceList!!.last().lastPrice > symbolAadapterEntity.highPriceList!![symbolAadapterEntity!!.highPriceList!!.size - 2].lastPrice) && symbolAadapterEntity.symbol.lastPrice >= symbolAadapterEntity.symbol.high) {
                         runOnUiThread {
+                            if (AppConfig.instance.sleepModel) {
+                                return@runOnUiThread
+                            }
                             addAlarm(symbolAadapterEntity, 0, index)
                         }
                     }
                     //破新低报警
-                    if (symbolAadapterEntity.fiveMinuteLowTimes >= 5 && symbolAadapterEntity.lowPriceList!!.size > 20 && (symbolAadapterEntity.lowPriceList!!.last().lastPrice < symbolAadapterEntity.lowPriceList!![symbolAadapterEntity!!.highPriceList!!.size - 2].lastPrice) && symbolAadapterEntity.symbol.lastPrice <= symbolAadapterEntity.symbol.low) {
+                    if (symbolAadapterEntity.symbol.totalTradedQuoteAssetVolume >= 10000000.toBigDecimal() && symbolAadapterEntity.fiveMinuteLowTimes >= 5 && (symbolAadapterEntity.lowPriceList!!.last().lastPrice < symbolAadapterEntity.lowPriceList!![symbolAadapterEntity!!.lowPriceList!!.size - 2].lastPrice) && symbolAadapterEntity.symbol.lastPrice <= symbolAadapterEntity.symbol.low) {
                         runOnUiThread {
+                            if (AppConfig.instance.sleepModel) {
+                                return@runOnUiThread
+                            }
                             addAlarm(symbolAadapterEntity, 1, index)
                         }
                     }
