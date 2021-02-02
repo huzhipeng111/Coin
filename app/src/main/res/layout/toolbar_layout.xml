@@ -43,4 +43,12 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="@dimen/commemTextSize" />
     </androidx.appcompat.widget.Toolbar>
+
+    <Switch
+        android:id="@+id/sleepModel"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x60" />
 </RelativeLayout>

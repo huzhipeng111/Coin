@@ -1,8 +1,8 @@
 package com.huzhipeng.coin.ui.adapter
 
+import com.binance.client.model.event.SymbolTickerEvent
 import com.huzhipeng.coin.db.CoinEntity
 import com.huzhipeng.coin.entity.PriceEntity
-import com.huzhipeng.coin.entity.SymbolTickerEvent
 import java.math.BigDecimal
 import java.util.*
 import kotlin.collections.ArrayList
@@ -27,10 +27,7 @@ class SymbolAdapterEntity {
         sixHoursPriceList = arrayListOf()
     }
 
-    fun update(index : Int) {
-        if (index != symbol.index) {
-            return
-        }
+    fun update() {
         try {
             gain24 = symbol.priceChangePercent
         } catch (e: Exception) {

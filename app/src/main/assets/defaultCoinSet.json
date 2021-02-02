@@ -550,5 +550,13 @@
     "symbol": "ZENUSDT",
     "amount" : 450.0,
     "unIngnoreTime": 0
+  },
+  {
+    "coinType": 2,
+    "decimal": 3,
+    "inIgnore": true,
+    "symbol": "SKLUSDT",
+    "amount" : 450.0,
+    "unIngnoreTime": 0
   }
 ]

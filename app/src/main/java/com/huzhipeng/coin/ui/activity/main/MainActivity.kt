@@ -8,24 +8,26 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Vibrator
 import android.provider.Settings
-import android.view.InflateException
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
 import android.widget.EditText
 import android.widget.TextView
 import androidx.core.view.LayoutInflaterCompat
 import androidx.core.view.LayoutInflaterFactory
+import com.binance.client.coin.SubscriptionClient
+import com.binance.client.model.event.SymbolTickerEvent
 import com.github.salomonbrys.kotson.fromJson
 import com.google.gson.Gson
+import com.huzhipeng.coin.CoinList
+import com.huzhipeng.coin.CoinType
+import com.huzhipeng.coin.DingTalkUtil
 import com.huzhipeng.coin.R
 import com.huzhipeng.coin.application.AppConfig
 import com.huzhipeng.coin.base.BaseActivity
 import com.huzhipeng.coin.constant.ConstantValue
 import com.huzhipeng.coin.db.AlarmRecord
 import com.huzhipeng.coin.db.CoinEntity
+import com.huzhipeng.coin.db.CoinEntityDao
 import com.huzhipeng.coin.entity.Symbol
-import com.huzhipeng.coin.entity.SymbolTickerEvent
 import com.huzhipeng.coin.service.BackGroundService
 import com.huzhipeng.coin.ui.activity.main.component.DaggerMainComponent
 import com.huzhipeng.coin.ui.activity.main.contract.MainContract
@@ -38,8 +40,14 @@ import com.huzhipeng.coin.view.BottomSheet
 import com.huzhipeng.coin.view.TitleTextWindow
 import com.pawegio.kandroid.toast
 import com.socks.library.KLog
+import io.reactivex.Observable
+import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_allsymbol.*
+import kotlinx.android.synthetic.main.item_allsymbol.symbol
+import kotlinx.android.synthetic.main.item_coin_set.*
 import okhttp3.*
 import okio.ByteString
 import org.greenrobot.eventbus.EventBus
@@ -47,23 +55,23 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.math.BigDecimal
 import java.util.*
+import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import kotlin.concurrent.thread
 
 
 /**
  * https://blog.csdn.net/Jeff_YaoJie/article/details/79164507
  */
 class MainActivity : BaseActivity(), MainContract.View {
-    lateinit var coinList: MutableList<CoinEntity>
-    lateinit var mOkHttpClient: OkHttpClient
     lateinit var adapterList: MutableList<SymbolAdapterEntity>
-    var mVibrator: Vibrator? = null
     var sortOrder = SortOrder.zhangfu5s
     val timeJianju = 30
-    var index = 0
     lateinit var ringtone: Ringtone
-    lateinit var mediaPlayer: MediaPlayer
+
+    private lateinit var eventList : ConcurrentLinkedQueue<MutableList<SymbolTickerEvent>>
+
     override fun showToast() {
 
     }
@@ -89,18 +97,9 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
     override fun initData() {
-
+        eventList = ConcurrentLinkedQueue()
         EventBus.getDefault().register(this)
-        mVibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
         setMonitorCoin(CoinEntity())
-        mediaPlayer = MediaPlayer.create(this, R.raw.music1)
-        mediaPlayer.setVolume(1f, 1f)
-        mediaPlayer.setOnPreparedListener(object : MediaPlayer.OnPreparedListener {
-            override fun onPrepared(mp: MediaPlayer?) {
-                mediaPlayer.start()
-            }
-
-        })
         setListener()
         if (Build.VERSION.SDK_INT >= 23) {
             if (!Settings.canDrawOverlays(this)) {
@@ -124,9 +123,16 @@ class MainActivity : BaseActivity(), MainContract.View {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun setMonitorCoin(coinEntity: CoinEntity) {
         adapterList = mutableListOf()
-        coinList = AppConfig.instance.daoSsesion.coinEntityDao.loadAll()
-        coinList.forEach {
-            adapterList.add(SymbolAdapterEntity(it, SymbolTickerEvent(it.symbol)))
+        CoinList.allCoinList.forEach {
+        var coin = AppConfig.instance.daoSsesion.coinEntityDao.queryBuilder().where(CoinEntityDao.Properties.Symbol.eq(it.toString())).build().unique()
+            if (coin == null) {
+                var coinEntity = CoinEntity()
+                coinEntity.symbol = it.toString()
+                AppConfig.instance.daoSsesion.coinEntityDao.insert(coinEntity)
+                adapterList.add(SymbolAdapterEntity(coinEntity, SymbolTickerEvent(it.toString())))
+            } else {
+                adapterList.add(SymbolAdapterEntity(coin, SymbolTickerEvent(it.toString())))
+            }
         }
         allSymbolAdapter = AllSymbolAdapter(arrayListOf())
         recyclerview.adapter = allSymbolAdapter
@@ -160,6 +166,13 @@ class MainActivity : BaseActivity(), MainContract.View {
     override fun initView() {
         setContentView(R.layout.activity_main)
         title.text = getString(R.string.app_name)
+        sleepModel.visibility = View.VISIBLE
+        sleepModel.isChecked = AppConfig.instance.sleepModel
+        sleepModel.setOnCheckedChangeListener { compoundButton, b ->
+            KLog.i("切换")
+            AppConfig.instance.sleepModel = b
+            SpUtil.putBoolean(this, ConstantValue.sleepModel, b)
+        }
         title.setOnClickListener {
             AppConfig.instance.showSymbol = ""
             startActivity(Intent(this, CourseActivity::class.java))
@@ -245,60 +258,102 @@ class MainActivity : BaseActivity(), MainContract.View {
         })
         super.onCreate(savedInstanceState)
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(false)
-        AppConfig.instance!!.applicationComponent!!.httpApiWrapper
     }
 
-    private var mSocket: WebSocket? = null
-    var socketListener = EchoWebSocketListener()
     private fun setListener() {
-        mOkHttpClient = OkHttpClient.Builder()
-                .readTimeout(10, TimeUnit.SECONDS)//设置读取超时时间
-                .writeTimeout(3, TimeUnit.SECONDS)//设置写的超时时间
-                .connectTimeout(3, TimeUnit.SECONDS)//设置连接超时时间
-                .build()
-        val request = Request.Builder().url(allTicker).build()
-        mOkHttpClient.newWebSocket(request, socketListener)
-        mOkHttpClient.dispatcher().executorService().shutdown()
+        val client = SubscriptionClient.create("", "")
+
+        client.subscribeAllTickerEvent({ event: MutableList<SymbolTickerEvent> ->
+//            KLog.i(event)
+            eventList.offer(event)
+//            client.unsubscribeAll()
+        }, null)
+        filterData()
     }
 
+    fun filterData() {
+        try{
+            thread {
+                val disposable: Disposable = Observable.interval(0, 1, TimeUnit.SECONDS)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(Schedulers.io())
+                        .onErrorReturn { 0.toLong() }
+                        .subscribe(object : Consumer<Long?> {
+                            override fun accept(aLong: Long?) {
+                                var list = eventList.poll()
+                                if (list != null) {
+                                    handlerData(list)
+                                }
+                            }
+                        })
+            }
+        } catch (e :Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    fun sendDingMessage(message : String, coinType: CoinType) {
+        thread {
+            DingTalkUtil.sendMessage(message, coinType)
+        }
+    }
+
+    val SET_TIME_INTERVAL = 5*60*1000
+    val NEW_PRICE_INTERVAL = 1*60*1000
 
     /**
      * 处理数据
      */
-    fun handlerData(mutableList: MutableList<SymbolTickerEvent>, index: Int) {
+    fun handlerData(mutableList: MutableList<SymbolTickerEvent>) {
         adapterList.forEach { symbolAadapterEntity ->
             mutableList.forEach {
                 if (it.symbol.equals(symbolAadapterEntity.coinEntity!!.symbol)) {
                     symbolAadapterEntity.symbol = it
-                    symbolAadapterEntity.update(index)
+                    symbolAadapterEntity.update()
                     //破新高报警
-                    if (symbolAadapterEntity.symbol.totalTradedQuoteAssetVolume >= 15000000.toBigDecimal() && symbolAadapterEntity.fiveMinuteHighTimes >= 8 && symbolAadapterEntity.highPriceList!!.size >= 20 && (symbolAadapterEntity.highPriceList!!.last().lastPrice > symbolAadapterEntity.highPriceList!![symbolAadapterEntity!!.highPriceList!!.size - 2].lastPrice) && symbolAadapterEntity.symbol.lastPrice >= symbolAadapterEntity.symbol.high) {
-                        runOnUiThread {
-                            if (AppConfig.instance.sleepModel) {
-                                return@runOnUiThread
-                            }
-                            addAlarm(symbolAadapterEntity, 0, index)
-                        }
-                    }
+//                    if (symbolAadapterEntity.symbol.totalTradedQuoteAssetVolume >= 15000000.toBigDecimal() && symbolAadapterEntity.fiveMinuteHighTimes >= 4 && symbolAadapterEntity.highPriceList!!.size >= 8 && (symbolAadapterEntity.highPriceList!!.last().lastPrice > symbolAadapterEntity.highPriceList!![symbolAadapterEntity!!.highPriceList!!.size - 2].lastPrice) && symbolAadapterEntity.symbol.lastPrice >= symbolAadapterEntity.symbol.high) {
+//                        if (symbolAadapterEntity.coinEntity.newHighPriceTime == 0.toLong() || System.currentTimeMillis() - symbolAadapterEntity.coinEntity.newHighPriceTime > NEW_PRICE_INTERVAL) {
+//                            symbolAadapterEntity.coinEntity.newHighPriceTime = System.currentTimeMillis()
+//                            AppConfig.instance.daoSsesion.coinEntityDao.update(symbolAadapterEntity.coinEntity)
+//                            runOnUiThread {
+//                                if (AppConfig.instance.sleepModel) {
+//                                    return@runOnUiThread
+//                                }
+//                                addAlarm(symbolAadapterEntity, CoinType.NewHighCoin)
+//                            }
+//                        }
+//                    }
                     //破新低报警
                     if (symbolAadapterEntity.symbol.totalTradedQuoteAssetVolume >= 10000000.toBigDecimal() && symbolAadapterEntity.fiveMinuteLowTimes >= 5 && (symbolAadapterEntity.lowPriceList!!.last().lastPrice < symbolAadapterEntity.lowPriceList!![symbolAadapterEntity!!.lowPriceList!!.size - 2].lastPrice) && symbolAadapterEntity.symbol.lastPrice <= symbolAadapterEntity.symbol.low) {
-                        runOnUiThread {
-                            if (AppConfig.instance.sleepModel) {
-                                return@runOnUiThread
+                        if (symbolAadapterEntity.coinEntity.newLowPriceTime == 0.toLong() || System.currentTimeMillis() - symbolAadapterEntity.coinEntity.newLowPriceTime > NEW_PRICE_INTERVAL) {
+                            symbolAadapterEntity.coinEntity.newLowPriceTime = System.currentTimeMillis()
+                            AppConfig.instance.daoSsesion.coinEntityDao.update(symbolAadapterEntity.coinEntity)
+                            runOnUiThread {
+                                if (AppConfig.instance.sleepModel) {
+                                    return@runOnUiThread
+                                }
+                                addAlarm(symbolAadapterEntity, CoinType.NewLowCoin)
                             }
-                            addAlarm(symbolAadapterEntity, 1, index)
                         }
                     }
                     //达到设定的低价报警
                     if (symbolAadapterEntity.coinEntity.lowPrice != 0.toFloat() && symbolAadapterEntity.symbol.lastPrice <= symbolAadapterEntity.coinEntity.lowPrice.toBigDecimal()) {
-                        runOnUiThread {
-                            addAlarm(symbolAadapterEntity, 2, index)
+                        if (symbolAadapterEntity.coinEntity.setLowPriceTime == 0.toLong() || System.currentTimeMillis() - symbolAadapterEntity.coinEntity.setLowPriceTime > SET_TIME_INTERVAL) {
+                            symbolAadapterEntity.coinEntity.setLowPriceTime = System.currentTimeMillis()
+                            AppConfig.instance.daoSsesion.coinEntityDao.update(symbolAadapterEntity.coinEntity)
+                            runOnUiThread {
+                                addAlarm(symbolAadapterEntity, CoinType.SetLowCoin)
+                            }
                         }
                     }
                     //达到设定的高价报警
                     if (symbolAadapterEntity.coinEntity.highPrice != 0.toFloat() && symbolAadapterEntity.symbol.lastPrice >= symbolAadapterEntity.coinEntity.highPrice.toBigDecimal()) {
-                        runOnUiThread {
-                            addAlarm(symbolAadapterEntity, 3, index)
+                        if (symbolAadapterEntity.coinEntity.setHighPriceTime == 0.toLong() || System.currentTimeMillis() - symbolAadapterEntity.coinEntity.setHighPriceTime > SET_TIME_INTERVAL) {
+                            symbolAadapterEntity.coinEntity.setHighPriceTime = System.currentTimeMillis()
+                            AppConfig.instance.daoSsesion.coinEntityDao.update(symbolAadapterEntity.coinEntity)
+                            runOnUiThread {
+                                addAlarm(symbolAadapterEntity, CoinType.SetHighCoin)
+                            }
                         }
                     }
                 }
@@ -311,19 +366,24 @@ class MainActivity : BaseActivity(), MainContract.View {
                 0
             }
         }
-
-        if (AppConfig.instance.sortByCoin) {
-            adapterList.sortBy { it.symbol!!.symbol }
-        } else if (AppConfig.instance.sortByGain24) {
-            adapterList.sortByDescending { it.gain24 }
-        } else {
-            adapterList.sortWith(c1)
+        try {
+            if (AppConfig.instance.sortByCoin) {
+                adapterList.sortBy { it.symbol!!.symbol }
+            } else if (AppConfig.instance.sortByGain24) {
+                adapterList.sortByDescending { it.gain24 }
+            } else {
+                adapterList.sortWith(c1)
+            }
+        } catch (e : Exception) {
+            e.printStackTrace()
         }
         adapterList.forEachIndexed { index1, it ->
             if (it.symbol != null && index1 == 0) {
+                if (it.symbol!!.eventTime == null) {
+                    return@forEachIndexed
+                }
                 var xiangchaShiJian = (System.currentTimeMillis() - it.symbol!!.eventTime) / 1000
                 if (xiangchaShiJian > 20) {
-                    mSocket?.close(1000, "timeout")
                     KLog.i("超时重连了。。。")
                 }
             }
@@ -333,17 +393,17 @@ class MainActivity : BaseActivity(), MainContract.View {
         }
     }
 
+
     /**
      * 添加报警的symbol
      */
-    private fun addAlarm(symbolAadapterEntity: SymbolAdapterEntity, type: Int, index: Int) {
+    private fun addAlarm(symbolAadapterEntity: SymbolAdapterEntity, type: CoinType) {
         KLog.i("触发报警了: " + symbolAadapterEntity.symbol.symbol)
         var alarmRecord = AlarmRecord()
         alarmRecord.symbol = symbolAadapterEntity.symbol.symbol
         alarmRecord.alarmTime = System.currentTimeMillis()
         alarmRecord.alarmPrice = symbolAadapterEntity.symbol.lastPrice.toPlainString()
-        alarmRecord.alarmType = type
-        alarmRecord.index = index
+        alarmRecord.alarmType = type.ordinal
         alarmRecord.gainTimeJianju = AppConfig.instance.PriceGainOfSencond
         alarmRecord.gain = symbolAadapterEntity.gain5m!!.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()
         alarmRecord.gain24 = symbolAadapterEntity.gain24!!.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()
@@ -360,13 +420,21 @@ class MainActivity : BaseActivity(), MainContract.View {
         val tvConfirmHigh = maskView.findViewById<TextView>(R.id.tvConfirmHigh)
         val tvConfirmLow = maskView.findViewById<TextView>(R.id.tvConfirmLow)
         tvConfirmHigh.setOnClickListener {
-            symbolAadapterEntity.coinEntity.highPrice = etHighPrice.text.toString().toFloat()
+            if ("".equals(etHighPrice.text.toString().trim())) {
+                symbolAadapterEntity.coinEntity.highPrice = 0.toFloat()
+            } else {
+                symbolAadapterEntity.coinEntity.highPrice = etHighPrice.text.toString().toFloat()
+            }
             AppConfig.instance.daoSsesion.coinEntityDao.update(symbolAadapterEntity.coinEntity)
             toast("更新成功")
         }
 
         tvConfirmLow.setOnClickListener {
-            symbolAadapterEntity.coinEntity.lowPrice = etLowPrice.text.toString().toFloat()
+            if ("".equals(etLowPrice.text.toString().trim())) {
+                symbolAadapterEntity.coinEntity.lowPrice = 0.toFloat()
+            } else {
+                symbolAadapterEntity.coinEntity.lowPrice = etLowPrice.text.toString().toFloat()
+            }
             AppConfig.instance.daoSsesion.coinEntityDao.update(symbolAadapterEntity.coinEntity)
             toast("更新成功")
         }
@@ -392,7 +460,7 @@ class MainActivity : BaseActivity(), MainContract.View {
     /**
      * 显示报警
      */
-    private fun showBaojingDialog(symbolAadapterEntity: SymbolAdapterEntity, type: Int, symbol: String) {
+    private fun showBaojingDialog(symbolAadapterEntity: SymbolAdapterEntity, type: CoinType, symbol: String) {
         if (System.currentTimeMillis() < symbolAadapterEntity.coinEntity.unIngnoreTime) {
             return
         }
@@ -400,21 +468,24 @@ class MainActivity : BaseActivity(), MainContract.View {
             showAlarmVibrate()
         }
         if (AppConfig.instance.alarmVoice) {
-            showAlarmVoice(type)
+//            showAlarmVoice(type)
         }
-        var textWindow = TitleTextWindow(this)
-        textWindow.coinEntity = symbolAadapterEntity.coinEntity
-        textWindow.show("报警的交易对为：" + symbolAadapterEntity.symbol.symbol + "-> " + symbolAadapterEntity.coinEntity!!.decimal + "\n 报警时价格为：" + symbolAadapterEntity.symbol.lastPrice.setScale(symbolAadapterEntity.coinEntity!!.decimal, BigDecimal.ROUND_HALF_UP).toPlainString() + "\n " + "5分钟涨幅为：" + symbolAadapterEntity.gain5m + "%\n 24小时涨幅为：" + symbolAadapterEntity.gain24 + "%\n 报警类型为：" + getType(type, symbolAadapterEntity))
+
+//        var textWindow = TitleTextWindow(this)
+//        textWindow.coinEntity = symbolAadapterEntity.coinEntity
+        var content = symbolAadapterEntity.symbol.symbol + "\n报警时价格为：" + symbolAadapterEntity.symbol.lastPrice.toPlainString() + "\n" + "5分钟涨幅为：" + symbolAadapterEntity.gain5m + "%\n24小时涨幅为：" + symbolAadapterEntity.gain24 + "%\n报警类型为：" + getType(type, symbolAadapterEntity)
+//        textWindow.show(content)
+        sendDingMessage(content, type)
     }
 
-    private fun getType(alarmType: Int, symbolAadapterEntity: SymbolAdapterEntity): String {
-        if (alarmType == 0) {
+    private fun getType(alarmType: CoinType, symbolAadapterEntity: SymbolAdapterEntity): String {
+        if (alarmType == CoinType.NewHighCoin) {
             return "破新高"
-        } else if (alarmType == 1) {
+        } else if (alarmType == CoinType.NewLowCoin) {
             return "破新低"
-        } else if (alarmType == 2) {
+        } else if (alarmType == CoinType.SetLowCoin) {
             return "达到设定低价"
-        } else if (alarmType == 3) {
+        } else if (alarmType == CoinType.SetHighCoin) {
             return "达到设定高价"
         }
         return ""
@@ -425,40 +496,12 @@ class MainActivity : BaseActivity(), MainContract.View {
      * 震动
      */
     fun showAlarmVibrate() {
-        mVibrator!!.vibrate(2000)
     }
 
     /**
      * 播放报警声音
      */
     fun showAlarmVoice(type: Int) {
-        if (!mediaPlayer.isPlaying) {
-            mediaPlayer.stop()
-            mediaPlayer.seekTo(0)
-            try {
-                when(type) {
-                    0 -> {
-                        val afd: AssetFileDescriptor = getResources().openRawResourceFd(R.raw.music5)
-                        mediaPlayer.setDataSource(afd)
-                    }
-                    1 -> {
-                        val afd: AssetFileDescriptor = getResources().openRawResourceFd(R.raw.music2)
-                        mediaPlayer.setDataSource(afd)
-                    }
-                    2 -> {
-                        val afd: AssetFileDescriptor = getResources().openRawResourceFd(R.raw.music3)
-                        mediaPlayer.setDataSource(afd)
-                    }
-                    3 -> {
-                        val afd: AssetFileDescriptor = getResources().openRawResourceFd(R.raw.music4)
-                        mediaPlayer.setDataSource(afd)
-                    }
-                }
-                mediaPlayer.prepareAsync()
-            } catch (e :java.lang.Exception) {
-                e.printStackTrace()
-            }
-        }
     }
 
 
@@ -471,7 +514,6 @@ class MainActivity : BaseActivity(), MainContract.View {
 
         override fun onOpen(webSocket: WebSocket, response: Response) {
             super.onOpen(webSocket, response)
-            mSocket = webSocket
             //            String openid = "1";
             //连接成功后，发送登录信息
             //            String message = sendData();
@@ -489,7 +531,6 @@ class MainActivity : BaseActivity(), MainContract.View {
 
         override fun onMessage(webSocket: WebSocket?, text: String?) {
             super.onMessage(webSocket, text)
-            index++
 //            output("服务器端发送来的信息：" + text!!)
             var symbols = Gson().fromJson<MutableList<Symbol>>(text!!)
             var mutableList = mutableListOf<SymbolTickerEvent>()
@@ -517,8 +558,6 @@ class MainActivity : BaseActivity(), MainContract.View {
              */
             symbols.forEach { jsonWrapper ->
                 val result = SymbolTickerEvent()
-                result.index = index
-
                 result.eventType = jsonWrapper.e
                 result.eventTime = jsonWrapper.E
                 result.symbol = jsonWrapper.s
@@ -540,7 +579,7 @@ class MainActivity : BaseActivity(), MainContract.View {
                 mutableList.add(result)
             }
             try {
-                handlerData(mutableList, index)
+                handlerData(mutableList)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -582,12 +621,6 @@ class MainActivity : BaseActivity(), MainContract.View {
         stopService(Intent(this, BackGroundService::class.java))
         isCloseedApp = true
         EventBus.getDefault().unregister(this)
-        socketListener.onClosed(mSocket, 0, "closeApp")
-        if (mSocket != null) {
-            mSocket!!.close(1000, null)
-            KLog.i("关闭连接。。")
-        }
-        mOkHttpClient.dispatcher().cancelAll()
         super.onDestroy()
         System.exit(0)
     }

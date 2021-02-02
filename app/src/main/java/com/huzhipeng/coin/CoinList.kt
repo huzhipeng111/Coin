@@ -1,0 +1,65 @@
+package com.huzhipeng.coin
+
+import java.util.*
+import kotlin.collections.ArrayList
+
+enum class CoinList(private val code: String) {
+    BTCUSDT("BTCUSDT"), ETHUSDT("ETHUSDT"), BCHUSDT("BCHUSDT"), LTCUSDT("LTCUSDT"),
+    XRPUSDT("XRPUSDT"), LINKUSDT("LINKUSDT"), EOSUSDT("EOSUSDT"), YFIUSDT("YFIUSDT"),
+    XLMUSDT("XLMUSDT"), ADAUSDT("ADAUSDT"), IOSTUSDT("IOSTUSDT"), MKRUSDT("MKRUSDT"),
+    SUSHIUSDT("SUSHIUSDT"), TRXUSDT("TRXUSDT"), DOTUSDT("DOTUSDT"), ETCUSDT("ETCUSDT"),
+    BNBUSDT("BNBUSDT"), SOLUSDT("SOLUSDT"), SXPUSDT("SXPUSDT"), UNIUSDT("UNIUSDT"),
+    AVAXUSDT("AVAXUSDT"), RSRUSDT("RSRUSDT"), BANDUSDT("BANDUSDT"), YFIIUSDT("YFIIUSDT"),
+    XTZUSDT("XTZUSDT"), VETUSDT("VETUSDT"), GRTUSDT("GRTUSDT"), SNXUSDT("SNXUSDT"),
+    ZRXUSDT("ZRXUSDT"), CRVUSDT("CRVUSDT"), THETAUSDT("THETAUSDT"), DOGEUSDT("DOGEUSDT"),
+    IOTAUSDT("IOTAUSDT"), NEOUSDT("NEOUSDT"), FILUSDT("FILUSDT"), ONEINCHUSDT("1INCHUSDT"),
+    ATOMUSDT("ATOMUSDT"), ZECUSDT("ZECUSDT"), DASHUSDT("DASHUSDT"), SRMUSDT("SRMUSDT"),
+    ZILUSDT("ZILUSDT"), LRCUSDT("LRCUSDT"), AAVEUSDT("AAVEUSDT"), COMPUSDT("COMPUSDT"),
+    OMGUSDT("OMGUSDT"), RENUSDT("RENUSDT"), ONTUSDT("ONTUSDT"), WAVESUSDT("WAVESUSDT"),
+    ALGOUSDT("ALGOUSDT"), XMRUSDT("XMRUSDT"), KAVAUSDT("KAVAUSDT"), STORJUSDT("STORJUSDT"),
+    ALPHAUSDT("ALPHAUSDT"), QTUMUSDT("QTUMUSDT"), DEFIUSDT("DEFIUSDT"), BATUSDT("BATUSDT"),
+    KNCUSDT("KNCUSDT"), RLCUSDT("RLCUSDT"), TRBUSDT("TRBUSDT"), ENJUSDT("ENJUSDT"),
+    EGLDUSDT("EGLDUSDT"), NEARUSDT("NEARUSDT"), TOMOUSDT("TOMOUSDT"), BALUSDT("BALUSDT"),
+    CVCUSDT("CVCUSDT"), BZRXUSDT("BZRXUSDT"), ICXUSDT("ICXUSDT"), KSMUSDT("KSMUSDT"),
+    RUNEUSDT("RUNEUSDT"), OCEANUSDT("OCEANUSDT"), AXSUSDT("AXSUSDT"), BELUSDT("BELUSDT"),
+    MATICUSDT("MATICUSDT"), FTMUSDT("FTMUSDT"), BLZUSDT("BLZUSDT"), FLMUSDT("FLMUSDT"),
+    CTKUSDT("CTKUSDT"), HNTUSDT("HNTUSDT"), ZENUSDT("ZENUSDT"), SKLUSDT("SKLUSDT"),
+    DOTECOUSDT("DOTECOUSDT"),AKROUSDT("AKROUSDT"),CHZUSDT("CHZUSDT"),SANDUSDT("SANDUSDT"),
+    ANKRUSDT("ANKRUSDT"),LUNAUSDT("LUNAUSDT"),BTSUSDT("BTSUSDT");
+
+    override fun toString(): String {
+        return code
+    }
+
+    companion object {
+        //不熟悉的币，不做。熟悉的币，有行情，果断做。
+        val allCoinList: ArrayList<CoinList>
+            get() = arrayListOf(BTCUSDT, ETHUSDT, BCHUSDT, LINKUSDT,
+                    SUSHIUSDT, DOTUSDT,BNBUSDT, UNIUSDT, BANDUSDT, SNXUSDT,
+                    GRTUSDT, THETAUSDT, ONEINCHUSDT, AAVEUSDT, ATOMUSDT, ZILUSDT,
+                    OMGUSDT, LRCUSDT, DEFIUSDT,ALPHAUSDT, BALUSDT, TRBUSDT,
+                    CVCUSDT, AXSUSDT, FTMUSDT, CRVUSDT, LUNAUSDT)
+
+        val mainSreamCoin: ArrayList<CoinList>
+            get() = arrayListOf(ETHUSDT, BCHUSDT, DOTUSDT, LTCUSDT, LINKUSDT, DEFIUSDT)
+        val strongCoin: ArrayList<CoinList>
+        get() = arrayListOf(AAVEUSDT, UNIUSDT,
+                SUSHIUSDT, CRVUSDT, ONEINCHUSDT, SNXUSDT, TRBUSDT, EGLDUSDT,COMPUSDT
+        )
+
+    }
+}
+
+enum class CoinType(private val url: String, private val secret: String) {
+    SetHighCoin("https://oapi.dingtalk.com/robot/send?access_token=6a878e61e867afe97c35c0934c9049f3e0feaf8eb8ba01be1e3e5f057684147d", "SEC10faff911a23236a8960dccc8dcd0f02595b1138f020f47cefac263cd0cf7067"),
+    SetLowCoin("https://oapi.dingtalk.com/robot/send?access_token=6e28dc6ae6a159226743b31590e258d89a010f28692f45fe31a828166587da02", "SECfe32f4a892a0a2b3929869af730cfb36cc8c9159de6edd2cb98a4d30a0ec8b1d"),
+    NewHighCoin("https://oapi.dingtalk.com/robot/send?access_token=7fa0ba72d95c889496507c7e25328d1a2af9dc184631bb2c71fd9cf910b43237", "SEC9e8211aaf7fcb7ceffd6b1cc1183fdfaa38a8f2c265faa32988c992d6e721995"),
+    NewLowCoin("https://oapi.dingtalk.com/robot/send?access_token=83ba181c41561514ea90ec5dfa311555c724c72f5dacf63c2fcfc627d9fa6f2e", "SEC909c6cb7dcc65e5cbe8bbdcc716e49906098d2fd6d876ce01d5ca882120cc3e5"),
+    CommonCoin("https://oapi.dingtalk.com/robot/send?access_token=ab8bf027c65e911a9ec51bef3e321b498b6d03de4b4fadc956b9e73c503193c0", "SEC32651e65080858bb5dd45cc3fa3bc8e4ef192d736efc804e157aaf206e08ee29");
+    fun getUrl(): String {
+        return url
+    }
+    fun getSecret() : String {
+        return secret
+    }
+}

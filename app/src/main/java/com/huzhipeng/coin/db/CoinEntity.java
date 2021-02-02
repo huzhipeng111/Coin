@@ -23,13 +23,18 @@ public class CoinEntity {
     private float amount;
     private float highPrice;
     private  float lowPrice;
+    private long newHighPriceTime;
+    private long newLowPriceTime;
+    private long setHighPriceTime;
+    private long setLowPriceTime;
     @Generated(hash = 177697228)
     public CoinEntity() {
     }
-    @Generated(hash = 1631076269)
+    @Generated(hash = 126579048)
     public CoinEntity(Long id, String symbol, int coinType, long unIngnoreTime,
             boolean inIgnore, int decimal, float amount, float highPrice,
-            float lowPrice) {
+            float lowPrice, long newHighPriceTime, long newLowPriceTime,
+            long setHighPriceTime, long setLowPriceTime) {
         this.id = id;
         this.symbol = symbol;
         this.coinType = coinType;
@@ -39,6 +44,10 @@ public class CoinEntity {
         this.amount = amount;
         this.highPrice = highPrice;
         this.lowPrice = lowPrice;
+        this.newHighPriceTime = newHighPriceTime;
+        this.newLowPriceTime = newLowPriceTime;
+        this.setHighPriceTime = setHighPriceTime;
+        this.setLowPriceTime = setLowPriceTime;
     }
     public Long getId() {
         return this.id;
@@ -93,5 +102,29 @@ public class CoinEntity {
     }
     public void setLowPrice(float lowPrice) {
         this.lowPrice = lowPrice;
+    }
+    public long getNewHighPriceTime() {
+        return this.newHighPriceTime;
+    }
+    public void setNewHighPriceTime(long newHighPriceTime) {
+        this.newHighPriceTime = newHighPriceTime;
+    }
+    public long getNewLowPriceTime() {
+        return this.newLowPriceTime;
+    }
+    public void setNewLowPriceTime(long newLowPriceTime) {
+        this.newLowPriceTime = newLowPriceTime;
+    }
+    public long getSetHighPriceTime() {
+        return this.setHighPriceTime;
+    }
+    public void setSetHighPriceTime(long setHighPriceTime) {
+        this.setHighPriceTime = setHighPriceTime;
+    }
+    public long getSetLowPriceTime() {
+        return this.setLowPriceTime;
+    }
+    public void setSetLowPriceTime(long setLowPriceTime) {
+        this.setLowPriceTime = setLowPriceTime;
     }
 }

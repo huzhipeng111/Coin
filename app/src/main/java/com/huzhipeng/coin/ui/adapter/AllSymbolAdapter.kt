@@ -17,7 +17,7 @@ class AllSymbolAdapter(arrayList: MutableList<SymbolAdapterEntity>) : BaseQuickA
         if(item?.symbol?.lastPrice == null) {
             helper.setText(R.id.price, "--")
         } else {
-            helper.setText(R.id.price, item.symbol.lastPrice.setScale(item.coinEntity.decimal, BigDecimal.ROUND_HALF_UP).toPlainString())
+            helper.setText(R.id.price, item.symbol.lastPrice.toPlainString())
         }
         //设置5分钟的涨跌幅
         if (item?.gain5m == null) {
@@ -59,16 +59,16 @@ class AllSymbolAdapter(arrayList: MutableList<SymbolAdapterEntity>) : BaseQuickA
         if (item?.symbol?.low == null) {
             helper.setText(R.id.lowPrice, "--")
         } else {
-            helper.setText(R.id.lowPrice, item.symbol!!.low.setScale(item.coinEntity.decimal, BigDecimal.ROUND_HALF_UP)?.toPlainString())
-            if ((item.symbol.lastPrice - item.symbol.low).divide(item.symbol.lastPrice, item.coinEntity.decimal, BigDecimal.ROUND_HALF_UP) <= 0.01.toBigDecimal()) {
+            helper.setText(R.id.lowPrice, item.symbol!!.low.toPlainString())
+            if ((item.symbol.lastPrice - item.symbol.low).divide(item.symbol.lastPrice, 5, BigDecimal.ROUND_HALF_UP) <= 0.01.toBigDecimal()) {
                 helper.setTextColor(R.id.lowPrice, mContext.resources.getColor(R.color.color_down))
             }
         }
         if (item?.symbol?.high == null) {
             helper.setText(R.id.heighPrice, "--")
         } else {
-            helper.setText(R.id.heighPrice, item.symbol!!.high.setScale(item.coinEntity.decimal, BigDecimal.ROUND_HALF_UP)?.toPlainString())
-            if ((item.symbol.high - item.symbol.lastPrice).divide(item.symbol.lastPrice, item.coinEntity.decimal, BigDecimal.ROUND_HALF_UP) <= 0.01.toBigDecimal()) {
+            helper.setText(R.id.heighPrice, item.symbol!!.high.toPlainString())
+            if ((item.symbol.high - item.symbol.lastPrice).divide(item.symbol.lastPrice, 5, BigDecimal.ROUND_HALF_UP) <= 0.01.toBigDecimal()) {
                 helper.setTextColor(R.id.heighPrice, mContext.resources.getColor(R.color.color_up))
             }
         }

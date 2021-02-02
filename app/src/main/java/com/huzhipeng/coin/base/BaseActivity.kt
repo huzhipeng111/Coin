@@ -9,6 +9,7 @@ import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.RelativeLayout
+import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -31,6 +32,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityDelegate {
     lateinit var relativeLayout_root: RelativeLayout
     lateinit var view: View
     lateinit var title: TextView
+    lateinit var sleepModel : Switch
     val point = Point()
 
     var inputMethodManager: InputMethodManager? = null
@@ -116,6 +118,8 @@ abstract class BaseActivity : AppCompatActivity(), ActivityDelegate {
 //            startActivity(Intent(this, LogActivity::class.java))
         }
         relativeLayout_root = findViewById<View>(R.id.root_rl) as RelativeLayout
+        sleepModel = relativeLayout_root.findViewById(R.id.sleepModel)
+
         view = findViewById(R.id.view)
         view.setLayoutParams(RelativeLayout.LayoutParams(UIUtils.getDisplayWidth(this), UIUtils.getStatusBarHeight(this) as Int))
         //        RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(UIUtils.getDisplayWidth(this), UIUtils.dip2px(getResources().getDimension(R.dimen.dp_69), this) - (UIUtils.getStatusBarHeight(this)));

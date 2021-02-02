@@ -31,6 +31,10 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
         public final static Property Amount = new Property(6, float.class, "amount", false, "AMOUNT");
         public final static Property HighPrice = new Property(7, float.class, "highPrice", false, "HIGH_PRICE");
         public final static Property LowPrice = new Property(8, float.class, "lowPrice", false, "LOW_PRICE");
+        public final static Property NewHighPriceTime = new Property(9, long.class, "newHighPriceTime", false, "NEW_HIGH_PRICE_TIME");
+        public final static Property NewLowPriceTime = new Property(10, long.class, "newLowPriceTime", false, "NEW_LOW_PRICE_TIME");
+        public final static Property SetHighPriceTime = new Property(11, long.class, "setHighPriceTime", false, "SET_HIGH_PRICE_TIME");
+        public final static Property SetLowPriceTime = new Property(12, long.class, "setLowPriceTime", false, "SET_LOW_PRICE_TIME");
     }
 
 
@@ -54,7 +58,11 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
                 "\"DECIMAL\" INTEGER NOT NULL ," + // 5: decimal
                 "\"AMOUNT\" REAL NOT NULL ," + // 6: amount
                 "\"HIGH_PRICE\" REAL NOT NULL ," + // 7: highPrice
-                "\"LOW_PRICE\" REAL NOT NULL );"); // 8: lowPrice
+                "\"LOW_PRICE\" REAL NOT NULL ," + // 8: lowPrice
+                "\"NEW_HIGH_PRICE_TIME\" INTEGER NOT NULL ," + // 9: newHighPriceTime
+                "\"NEW_LOW_PRICE_TIME\" INTEGER NOT NULL ," + // 10: newLowPriceTime
+                "\"SET_HIGH_PRICE_TIME\" INTEGER NOT NULL ," + // 11: setHighPriceTime
+                "\"SET_LOW_PRICE_TIME\" INTEGER NOT NULL );"); // 12: setLowPriceTime
     }
 
     /** Drops the underlying database table. */
@@ -83,6 +91,10 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
         stmt.bindDouble(7, entity.getAmount());
         stmt.bindDouble(8, entity.getHighPrice());
         stmt.bindDouble(9, entity.getLowPrice());
+        stmt.bindLong(10, entity.getNewHighPriceTime());
+        stmt.bindLong(11, entity.getNewLowPriceTime());
+        stmt.bindLong(12, entity.getSetHighPriceTime());
+        stmt.bindLong(13, entity.getSetLowPriceTime());
     }
 
     @Override
@@ -105,6 +117,10 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
         stmt.bindDouble(7, entity.getAmount());
         stmt.bindDouble(8, entity.getHighPrice());
         stmt.bindDouble(9, entity.getLowPrice());
+        stmt.bindLong(10, entity.getNewHighPriceTime());
+        stmt.bindLong(11, entity.getNewLowPriceTime());
+        stmt.bindLong(12, entity.getSetHighPriceTime());
+        stmt.bindLong(13, entity.getSetLowPriceTime());
     }
 
     @Override
@@ -123,7 +139,11 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
             cursor.getInt(offset + 5), // decimal
             cursor.getFloat(offset + 6), // amount
             cursor.getFloat(offset + 7), // highPrice
-            cursor.getFloat(offset + 8) // lowPrice
+            cursor.getFloat(offset + 8), // lowPrice
+            cursor.getLong(offset + 9), // newHighPriceTime
+            cursor.getLong(offset + 10), // newLowPriceTime
+            cursor.getLong(offset + 11), // setHighPriceTime
+            cursor.getLong(offset + 12) // setLowPriceTime
         );
         return entity;
     }
@@ -139,6 +159,10 @@ public class CoinEntityDao extends AbstractDao<CoinEntity, Long> {
         entity.setAmount(cursor.getFloat(offset + 6));
         entity.setHighPrice(cursor.getFloat(offset + 7));
         entity.setLowPrice(cursor.getFloat(offset + 8));
+        entity.setNewHighPriceTime(cursor.getLong(offset + 9));
+        entity.setNewLowPriceTime(cursor.getLong(offset + 10));
+        entity.setSetHighPriceTime(cursor.getLong(offset + 11));
+        entity.setSetLowPriceTime(cursor.getLong(offset + 12));
      }
     
     @Override
