@@ -35,9 +35,9 @@ enum class CoinList(private val code: String) {
         //不熟悉的币，不做。熟悉的币，有行情，果断做。
         val allCoinList: ArrayList<CoinList>
             get() = arrayListOf(BTCUSDT, ETHUSDT, BCHUSDT, LINKUSDT,
-                    SUSHIUSDT, DOTUSDT,BNBUSDT, UNIUSDT, BANDUSDT, SNXUSDT,
-                    GRTUSDT, THETAUSDT, ONEINCHUSDT, AAVEUSDT, ATOMUSDT, ZILUSDT,
-                    OMGUSDT, LRCUSDT, DEFIUSDT,ALPHAUSDT, BALUSDT, TRBUSDT,
+                    SUSHIUSDT, DOTUSDT,BNBUSDT, UNIUSDT, SNXUSDT,
+                    GRTUSDT, ONEINCHUSDT, AAVEUSDT, LRCUSDT,
+                    DEFIUSDT,ALPHAUSDT, BALUSDT, TRBUSDT,
                     CVCUSDT, AXSUSDT, FTMUSDT, CRVUSDT, LUNAUSDT)
 
         val mainSreamCoin: ArrayList<CoinList>
